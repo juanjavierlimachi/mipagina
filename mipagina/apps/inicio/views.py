@@ -240,8 +240,8 @@ def crearBackup(request):
 
 	os.system(command)
 	#os.path.isdir(os.system(command))
-	src = 'G:\sistemaAlmacenAnterior/bd_'+file+'.sql'
-	dst = 'G:\sistemaAlmacenAnterior/mipagina/media/bd_'+file+'.sql'
+	src = 'G:\mipagina/bd_'+file+'.sql'
+	dst = 'G:\mipagina/mipagina/media/bd_'+file+'.sql'
 	shutil.copy(src, dst)
 	return HttpResponse("Se creo el Respaldo de la Base de Datos Correctamente !!! <a href='/media/bd_"+file+".sql' download='bd_"+file+".sql'>Descargar</a>")
 def ImportDB(request):

@@ -5,9 +5,9 @@ table tr td #ar{
 }
 </style>
 <table class="table table-hover table-striped">
-	<tr class="success"><td><img id ="ar" src="http://localhost:8000{{STATIC_URL}}img/logo.jpg"></td><td align="center" colspan="7"><br><br> Kardex Valorado Producto:   {{producto.Nombre_producto|upper}}</td><td>
+	<tr class="success"><td><img id ="ar" src="{{STATIC_URL}}img/logo.jpg"></td><td align="center" colspan="7"><br><br> Kardex Valorado Producto:   {{producto.Nombre_producto|upper}}</td><td>
 		{% if producto.archivo == '' %}
-		<img id ="ar" src="http://localhost:8000{{STATIC_URL}}img/on.png">
+		<img id ="ar" src="{{STATIC_URL}}img/on.png">
 		{% else %}
 		<img id ="ar" src="{{MEDIA_URL}}{{producto.archivo}}">
 		{% endif %}
@@ -24,9 +24,9 @@ table tr td #ar{
 		<td colspan="3"><br>Categoria: {{producto.Categoria}}</td>
 		<td colspan="4"><br>Fecha de Registro: {{producto.fecha_registro}}</td>
 		<td colspan="2"><br>Estado:  {% if producto.estado == 0 %}
-				<img src="http://localhost:8000{{STATIC_URL}}img/icon_success.gif" title="Activo">
+				<img src="{{STATIC_URL}}img/icon_success.gif" title="Activo">
 			{% else %}
-				<img src="http://localhost:8000{{STATIC_URL}}img/icon_error.gif" title="Inactivo">
+				<img src="{{STATIC_URL}}img/icon_error.gif" title="Inactivo">
 			{% endif %}</td>
 	</tr>
 
@@ -64,11 +64,11 @@ table tr td #ar{
   	{% endif %}
 	</tr>
 </table>
-<a clas="btn btn-primary" type="button" href="/ImprimirKardex/{{producto.id}}/" target="_blank" title="Imprimir Kardex"><span class="glyphicon glyphicon-print"></span>  Kardex Valorado</a>
+<a type="button" class="btn btn-default" href="/ImprimirKardex/{{producto.id}}/" target="_blank" title="Imprimir Kardex"><span class="glyphicon glyphicon-print"></span>  Kardex Valorado</a>
 
-<a clas="btn btn-primary" type="button" href="#" onclick="kardexSalidas()" title="Imprimir Salidas del Poducto"><span class="glyphicon glyphicon-print"></span>  Imprimir Salidas</a>
+<a type="button" class="btn btn-default" href="#" onclick="kardexSalidas()" title="Imprimir Salidas del Poducto"><span class="glyphicon glyphicon-print"></span>  Imprimir Salidas</a>
 
-<a clas="btn btn-primary" type="button" href="#" onclick="kardexIngreso()" title="Imprimir Entradas del Producto"><span class="glyphicon glyphicon-print"></span>  Imprimir Entradas</a>
+<a type="button" class="btn btn-default" href="#" onclick="kardexIngreso()" title="Imprimir Entradas del Producto"><span class="glyphicon glyphicon-print"></span>  Imprimir Entradas</a>
 <div class="table-responsive">
 <div>
 <script type="text/javascript">

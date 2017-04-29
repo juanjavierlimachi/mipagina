@@ -1,3 +1,4 @@
+<div class="table-responsive">
 <script type="text/javascript" src="{{STATIC_URL}}js/modales.js"></script>
 <table class="table table-hover table-striped">
 	<tr><td colspan="7" align="center">PRODUCTOS INGRESADOS POR EL TRABAJADOR: {{proveedor.Nombre_trabajador|upper}} - {{proveedor.Apellidos|upper}} - CI: {{proveedor.Ci_Nit}} TELF:{{proveedor.Telefono}}</td></tr>
@@ -36,3 +37,4 @@
 {% endfor %}
 <tr> <td>Registros:{{t_ingresos}}</td><td></td><td colspan="2">Total Gasto: {{total}}</td></tr>
 </table>
+</div>

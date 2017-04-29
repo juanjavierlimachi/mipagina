@@ -126,7 +126,7 @@ def IngresaProducto(request):
 		forms=FormCompra(request.POST)
 		if forms.is_valid():
 			forms.save()
-			return HttpResponse("Se Registro los datos Carrectamente.")
+			return HttpResponse("Se Registró los datos Carrectamente.")
 	else:
 		forms=FormCompra()
 	return render_to_response('producto/IngresaProducto.html',{'forms':forms},context_instance=RequestContext(request))

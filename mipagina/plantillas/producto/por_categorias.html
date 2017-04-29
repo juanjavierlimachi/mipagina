@@ -48,6 +48,7 @@ $('#categorias table tr td #salida').on('click', function(){
 });
     
 </script>
+<div class="table-responsive">
 <div id="categorias">
    <table class="table table-hover table-striped">
   <tr><td colspan="11" align="center">LISTA DE ARTÍCULOS E INSUMOS</td></tr>
@@ -109,6 +110,6 @@ $('#categorias table tr td #salida').on('click', function(){
   {% endfor %}
   <tr><td></td><td>Total de registros:{{cont}}</td><!-- <td><a href="/IngresaProducto/" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span>Ingresar Productos</a></td> --></tr>
   </table>
-
+</div>
 </div>
 <script type="text/javascript" src="{{STATIC_URL}}js/modales.js"></script>
