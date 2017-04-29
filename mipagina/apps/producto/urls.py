@@ -1,0 +1,97 @@
+from django.conf.urls import patterns, include, url
+from .views import *
+urlpatterns = patterns('',
+	
+	url(r'^newCategoria/$',newCategoria),
+	
+	url(r'^verCategoria/$',verCategoria),
+	url(r'^NewProducto/$',NewProducto),
+	
+	url(r'^VerProductos/$',VerProductos),
+	
+	url(r'^addProducto/(?P<id>\d+)/$',addProducto),
+	url(r'^deleteCate/(?P<id>\d+)/$',deleteCate),
+	url(r'^delCate/(?P<id>\d+)/$',delCate),
+	url(r'^editCate/(?P<id>\d+)/$',editCate),
+
+	url(r'^deleteProducto/(?P<id>\d+)/$',deleteProducto),
+	url(r'^delProducto/(?P<id>\d+)/$',delProducto),
+	url(r'^editProducto/(?P<id>\d+)/$',editProducto),
+	url(r'^addCompra/(?P<id>\d+)/$',addCompra),
+	url(r'^IngresaProducto/$',IngresaProducto),
+
+	url(r'^Ingresos/(?P<id>\d+)/$',Ingresos),
+	url(r'^por_categorias/(?P<id>\d+)/$',por_categorias),
+	url(r'^stock_de_productos/(?P<id>\d+)/$',stock_de_productos),
+	#urls de Salidas 
+	url(r'^salidas/(?P<id>\d+)/$',salidas),
+	url(r'^BuscarTrab/$',BuscarTrab),
+	url(r'^SalidaProducto/$',SalidaProducto),
+	url(r'^SalidaProductoCliente/$',SalidaProductoCliente),
+	
+	url(r'^get_retorna_salidas/$',get_retorna_salidas),
+	url(r'^get_retorna_salidas_view/$',get_retorna_salidas_view),
+	#urls de Ingresos
+	url(r'^IngresosP/(?P<id>\d+)/$',IngresosP),
+	url(r'^BuscarProveedor/$',BuscarProveedor),
+	url(r'^IngresosProductos/$',IngresosProductos),
+	url(r'^IngresoProductoCliente/$',IngresoProductoCliente),
+	url(r'^get_retorna_ingresos/$',get_retorna_ingresos),
+	url(r'^get_retorna_ingresos_view/$',get_retorna_ingresos_view),
+	url(r'^uploadFiles/$',uploadFiles),
+	url(r'^kardex/(?P<id>\d+)/$',kardex),
+
+	url(r'^inProduct/$',inProduct),
+	url(r'^outProduct/$',outProduct),
+
+	url(r'^deleteSalidas/(?P<id>\d+)/$',deleteSalidas),
+	url(r'^deleteSalidasConfir/(?P<id>\d+)/$',deleteSalidasConfir),
+	url(r'^deleteIngresos/(?P<id>\d+)/$',deleteIngresos),
+	url(r'^deleteIngresosConfir/(?P<id>\d+)/$',deleteIngresosConfir),
+	url(r'^editIngresos/(?P<id>\d+)/$',editIngresos),
+	url(r'^editSalidas/(?P<id>\d+)/$',editSalidas),
+	url(r'^buscarProducto_view/$',buscarProducto_view),
+	url(r'^ShearProduc/(?P<id>\d+)/$',ShearProduc),
+
+	url(r'^deleteProductoRecuperar/(?P<id>\d+)/$',deleteProductoRecuperar),
+	url(r'^recupera/(?P<id>\d+)/$',recupera),
+	url(r'^capturaImg/$',capturaImg),
+	url(r'^captura_qr/$',captura_qr),
+	#url(r'^ImprimirKardex/(?P<id>\d+)/$',ImprimirKardex),
+	url(r'^detaleProducto/$',detaleProducto),
+	url(r'^ImprimirKardex/(?P<id>\d+)/$',ImprimirKardex),
+	url(r'^update_session/$',update_session),
+	url(r'^cantidadSalida/$',CantidadSalida),
+	url(r'^cantidadIngresos/$',CantidadIngresos),
+	url(r'^oprtenerDatos/$',oprtenerDatos),
+
+	url(r'^ImprimiarIngresos/(?P<id>\d+)/(?P<inicio>[^/]+)/(?P<fin>[^/]+)/$',ImprimiarIngresos),
+	url(r'^ImprimiarSalidas/(?P<id>\d+)/(?P<inicio>[^/]+)/(?P<fin>[^/]+)/$',ImprimiarSalidas),
+	url(r'^ReportesProducto/$',ReportesProducto),
+	url(r'^buscarProducto/$',buscarProducto),
+	url(r'^ImprmirCli/(?P<datos>[^/]+)/$',ImprmirCli),
+	url(r'^ImprmirPro/(?P<datos>[^/]+)/$',ImprmirPro),
+	url(r'^estadistico/$',estadistico),
+
+	#newReserva
+	url(r'^newReserva/$',newReserva),
+	url(r'^ReservasNew/$',ReservasNew),
+	url(r'^salidasRe/(?P<id>\d+)/$',salidasRe),
+	url(r'^BuscarTrabRe/$',BuscarTrabRe),
+	url(r'^GuardarReserva/$',GuardarReserva),
+	url(r'^registroReserva/$',ReservasRegistro),
+	url(r'^RegisterReserva/$',RegisterReserva),
+	url(r'^cantidadreservas/$',cantidadreservas),
+	url(r'^get_retorna_reservas_view/$',get_retorna_reservas_view),
+	url(r'^get_retorna_reservas/$',get_retorna_reservas),
+	url(r'^ver_reservas/$',ver_reservas),
+	url(r'^ImprimirKardexSalidas/(?P<id>\d+)/$',ImprimirKardexSalidas),
+	url(r'^ImprimirKardexEntradas/(?P<id>\d+)/$',ImprimirKardexEntradas),
+	url(r'^editReserva/(?P<id>\d+)/$',editReserva),
+	url(r'^deleteReserva/(?P<id>\d+)/$',deleteReserva),
+	url(r'^delReserva/(?P<id>\d+)/$',delReserva),
+	url(r'^buscarProducto_Reserva/$',buscarProducto_Reserva),
+	url(r'^ShearProduc_Reserva/(?P<id>\d+)/$',ShearProduc_Reserva),
+	url(r'^KardexGeneral/$',KardexGeneral),
+	url(r'^valorado/$',valorado),
+)

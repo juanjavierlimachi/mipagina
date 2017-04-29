@@ -1,0 +1,94 @@
+<style type="text/css">
+table tr td{text-align: center;}
+table tr td #ar{
+	height: 100px;width: 100px;
+}
+</style>
+<table class="table table-hover table-striped">
+	<tr class="success"><td><img id ="ar" src="http://localhost:8000{{STATIC_URL}}img/logo.jpg"></td><td align="center" colspan="7"><br><br> Kardex Valorado Producto:   {{producto.Nombre_producto|upper}}</td><td>
+		{% if producto.archivo == '' %}
+		<img id ="ar" src="http://localhost:8000{{STATIC_URL}}img/on.png">
+		{% else %}
+		<img id ="ar" src="{{MEDIA_URL}}{{producto.archivo}}">
+		{% endif %}
+		 </td></tr>
+	<tr>
+		<td colspan="2"><br>Marca: {{producto.Marca}}</td>
+		<td colspan="2"><br>Precio Unitario: {{producto.Precio_producto}}</td>
+		<td><br>Stock: {{producto.Stock}}</td>
+		<td colspan="2"><br>Valor en Bs: {{valor}}</td>
+		<td colspan="2"><br>Registrado Por: {{producto.Usuario}}</td>
+	</tr>
+
+	<tr>
+		<td colspan="3"><br>Categoria: {{producto.Categoria}}</td>
+		<td colspan="4"><br>Fecha de Registro: {{producto.fecha_registro}}</td>
+		<td colspan="2"><br>Estado:  {% if producto.estado == 0 %}
+				<img src="http://localhost:8000{{STATIC_URL}}img/icon_success.gif" title="Activo">
+			{% else %}
+				<img src="http://localhost:8000{{STATIC_URL}}img/icon_error.gif" title="Inactivo">
+			{% endif %}</td>
+	</tr>
+
+		<tr>
+			<td colspan="4"><br>Total Salidas del Producto:{{salidas}} </td>
+			<td colspan="5"><br>Valor Bs:  {{bs}} </td>
+		</tr>
+		<tr>
+			<td colspan="4"><br>Total Ingresos del Producto:{{ingresos}} </td>
+			<td colspan="5"><br>Valor Bs. {{bsi}} </td>
+		</tr>
+
+	<tr>
+		<td colspan="4"><br>Ultima fecha de Salida: {% for i in salidas_ul %}
+				{{i.fecha_registro}}
+			{% empty %}
+			El producto no tiene salida
+			{% endfor %}
+		<td colspan="5"><br>Ultima fecha de Ingreso: {% for i in ingresos_ul %}
+				{{i.fecha_registro}}
+			{% empty %}
+			El prodcuto no tiene Ingreso
+			{% endfor %}</td>
+	</tr>
+	<tr>
+	{% if user.is_active and user.is_superuser %}
+		<td><a href="/editProducto/{{producto.id}}/" title="Editar"><span class="glyphicon glyphicon-pencil"></span></a></td>
+		{% if producto.estado == 0 %}
+		<td><a href="/deleteProducto/{{producto.id}}/" title="Dar Baja"><span class="glyphicon glyphicon-trash"></span></a></td>
+		{% else %}
+		<td><a href="/deleteProductoRecuperar/{{producto.id}}/" title="Dar Alta"><span class="glyphicon glyphicon-saved"></span></a></td>
+		{% endif %}
+	{% else %}
+  		<td><span class="glyphicon glyphicon-info-sign"></span></td>
+  	{% endif %}
+	</tr>
+</table>
+<a clas="btn btn-primary" type="button" href="/ImprimirKardex/{{producto.id}}/" target="_blank" title="Imprimir Kardex"><span class="glyphicon glyphicon-print"></span>  Kardex Valorado</a>
+
+<a clas="btn btn-primary" type="button" href="#" onclick="kardexSalidas()" title="Imprimir Salidas del Poducto"><span class="glyphicon glyphicon-print"></span>  Imprimir Salidas</a>
+
+<a clas="btn btn-primary" type="button" href="#" onclick="kardexIngreso()" title="Imprimir Entradas del Producto"><span class="glyphicon glyphicon-print"></span>  Imprimir Entradas</a>
+<div class="table-responsive">
+<div>
+<script type="text/javascript">
+		function kardexSalidas(){
+			$.ajax({
+				type:'GET',
+				url:'/ImprimirKardexSalidas/{{producto.id}}/',
+				success:function(resp){
+					$(".table-responsive").html(resp);
+				}
+			});
+		}
+		function kardexIngreso(){
+			$.ajax({
+				type:'GET',
+				url:'/ImprimirKardexEntradas/{{producto.id}}/',
+				success:function(resp){
+					$(".table-responsive").html(resp);
+				}
+			});
+		}
+</script>
+<script type="text/javascript" src="{{STATIC_URL}}js/modales.js"></script>

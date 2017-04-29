@@ -1,0 +1,50 @@
+<style type="text/css">
+table tr td{text-align: center;}
+table tr td #ar{
+	height: 100px;width: 100px;
+}
+</style>
+<table border="1" class="table table-hover table-striped">
+	<tr class="success"><td><img id ="ar" src="http://localhost:8000{{STATIC_URL}}img/logo.jpg"></td><td align="center" colspan="7"><br><br> KARDEX VALORADO DEL PRODUCTO:   {{producto.Nombre_producto|upper}}</td><td>
+		<img id ="ar" src="{{MEDIA_URL}}{{producto.archivo}}"> </td></tr>
+	<tr>
+		<td align="center" colspan="2"><br>Marca: {{producto.Marca}}</td>
+		<td align="center" colspan="2"><br>Precio Unitario: {{producto.Precio_producto}}</td>
+		<td align="center"><br>Stock: {{producto.Stock}}</td>
+		<td align="center" colspan="2"><br>Valor en Bs: {{valor}}</td>
+		<td align="center" colspan="2"><br>Registrado Por: {{producto.Usuario}}</td>
+	</tr>
+
+	<tr>
+		<td align="center" colspan="3"><br>Categoria: {{producto.Categoria}}</td>
+		<td align="center" colspan="4"><br>Fecha de Registro: {{producto.fecha_registro}}</td>
+		<td align="center" colspan="2"><br>Estado:  {% if producto.estado == 0 %}
+				<img src="http://localhost:8000{{STATIC_URL}}img/icon_success.gif" title="Activo">
+			{% else %}
+				<img src="http://localhost:8000{{STATIC_URL}}img/icon_error.gif" title="Inactivo">
+			{% endif %}</td>
+	</tr>
+
+		<tr>
+			<td align="center" colspan="4"><br>Total Salidas del Producto:{{salidas}} </td>
+			<td align="center" colspan="5"><br>Valor Bs:  {{bs}} </td>
+		</tr>
+		<tr>
+			<td align="center" colspan="4"><br>Total Ingresos del Producto:{{ingresos}} </td>
+			<td align="center" colspan="5"><br>Valor Bs. {{bsi}} </td>
+		</tr>
+
+	<tr>
+		<td align="center" colspan="4"><br>Ultima fecha de Salida: {% for i in salidas_ul %}
+				{{i.fecha_registro}}
+			{% empty %}
+			El producto no tiene salida
+			{% endfor %}
+		<td align="center" colspan="5"><br>Ultima fecha de Ingreso: {% for i in ingresos_ul %}
+				{{i.fecha_registro}}
+			{% empty %}
+			El prodcuto no tiene Ingreso
+			{% endfor %}</td>
+	</tr>
+	
+</table>

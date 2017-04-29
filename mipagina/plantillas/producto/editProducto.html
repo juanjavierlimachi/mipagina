@@ -1,0 +1,36 @@
+
+<script type="text/javascript">
+$('#Tipo').submit(function(e){
+		e.preventDefault();
+		var dato=new FormData(this);
+		console.log(dato);
+		$.ajax({
+			type:"POST",
+			url:"/editProducto/"+{{cod}}+"/",
+			data: dato,
+			contentType: false,
+	        processData: false,
+			success:function(resp){
+				console.log(resp);
+				$('#ventanas').html(resp);
+				$.ajax({
+					type:'GET',
+					url:'/kardex/'+{{cod}},
+					success:function(res){
+						$('#categorias').html(res);
+					}
+				});
+			}
+		});
+	});
+
+
+
+
+</script>
+<div class="card">
+<form method="POST" id="Tipo" enctype="multipart/form-data">{% csrf_token %}
+	{{forms}}<br>
+	<button class="btn btn-success">Actualizar</button>
+</form>
+</div>

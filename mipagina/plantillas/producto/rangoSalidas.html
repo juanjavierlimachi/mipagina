@@ -1,0 +1,38 @@
+<script type="text/javascript" src="{{STATIC_URL}}js/modales.js"></script>
+<table class="table table-hover table-striped">
+	<tr><td colspan="7" align="center">PRODUCTOS INGRESADOS POR EL TRABAJADOR: {{proveedor.Nombre_trabajador|upper}} - {{proveedor.Apellidos|upper}} - CI: {{proveedor.Ci_Nit}} TELF:{{proveedor.Telefono}}</td></tr>
+<tr class="success"><td>Producto</td>
+	<td>Cantidad</td>
+	<td>Precio</td>
+	<td>total</td>
+	<td>Fecha y hora de Registro</td>
+	<td>Opciones</td>
+	<td>Estado</td>
+</tr>
+{% for i in ingresos %}
+<tr>
+	<td>{{i.producto}}</td>
+	<td>{{i.cantidad}}</td>
+	<td>{{i.Precio_unidad}}</td>
+	<td>{{i.total}}</td>
+	<td>{{i.fecha_registro}}</td>
+	<td>
+		{% if user.is_active and user.is_superuser %}
+		<a href="/editIngresos/{{i.id}}/"><span class="glyphicon glyphicon-pencil"></span></a>
+		<a href="/deleteIngresos/{{i.id}}/" style="color:red;"><span class="glyphicon glyphicon-trash"></span></a>
+		{% else %}
+			<span class="glyphicon glyphicon-info-sign"></span>
+		{% endif %}
+	</td>
+	<td>{% if i.estado == 0 %}
+	<span><a href="/deleteSalidas/{{i.id}}/"><img src="/static/img/icon_success.gif"></a></span>
+		{% else %}
+	<span><a href="/deleteSalidasRecuperar/{{i.id}}/"><img src="/static/img/icon_error.gif"></span>
+		{% endif %}
+	</td>
+</tr>
+{% empty %}
+	<tr><td>No se encontraron registros.</td></tr>
+{% endfor %}
+<tr> <td>Registros:{{t_ingresos}}</td><td></td><td colspan="2">Total Gasto: {{total}}</td></tr>
+</table>

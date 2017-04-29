@@ -1,0 +1,64 @@
+<style type="text/css">
+#Tra{margin-top: -20px;}
+</style>
+<div class="card">
+<form method="GET" id="Tra">{% csrf_token %}>
+	<label>Busque al Trabajador:</label>
+	<input type="text" placeholder="Nombre, Apellidos, CI/NIT" class="form-control" id="ShearTra" name="ShearTra" required autocomplete="off" title="Buscar Trabajador"/>
+        <button class="btn btn-default">Buscar</button>
+        {% if maximo > 0 %}
+        	Continuar la reserva de: <a href="{{t.id}}" id="continuar">
+        <span class="glyphicon glyphicon-chevron-right">   {{t.Nombre_trabajador|upper}}</span></a>
+        {% endif %}
+    </form>
+   <p id="resp"></p>
+</div>
+<script type="text/javascript">
+$("#Tra").submit(function(e){
+		e.preventDefault();
+		$("#continuar").hide(0);
+		var datos={
+			'trabajador':$("#ShearTra").val(),
+			'producto':"{{id_pro}}"
+		}
+		console.log(datos);
+		$.ajax({
+			type:'GET',
+			url:'/BuscarTrabRe/',
+			data: datos,
+			success: function(data){
+				console.log(data);
+				$('#resp').html(data);
+				$(".messages-menu .label-warning").html("0");
+			}	
+		});
+	});
+$('#resp li a').on('click', function(e){
+	e.preventDefault();
+		var urla=$('#resp li a').attr('href'); 
+		//alert(urla);
+		return false;
+	});
+/*function Recuperar(e){
+		e.preventDefault();
+		var urla=$(this).attr('href'); 
+		alert(urla);
+	}*/
+$("#continuar").on('click',function(e){
+	e.preventDefault();
+	var datos={
+			'trabajador':$("#continuar").attr("href"),
+			'producto':"{{id_pro}}"
+		}
+	$.ajax({
+		type:"GET",
+		url:"/GuardarReserva/",
+		data:datos,
+		success:function(resp){
+			$("#resp").html(resp);
+		}
+	});
+	//alert("continuar");
+	return false;
+});
+</script>

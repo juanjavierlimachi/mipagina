@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+   <script src="{{STATIC_URL}}js/jQuery-2.2.0.min.js"></script>
+    <title>{% block title %}Sistema{% endblock %}</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{{STATIC_URL}}css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template   required autofocus    required
+<link href="{{STATIC_URL}}css/signin.css" rel="stylesheet">-->
+<script type="text/javascript">
+    setInterval(function() { 
+            $('#slideshow > div:first')
+                .fadeOut(2000)
+                .next()
+                .fadeIn(2000)
+                .end()
+                .appendTo('#slideshow');
+        },  3000);
+</script>
+   <style type="text/css">
+      body { 
+ background: url('/assets/example/bg_suburb.jpg') no-repeat center center fixed; 
+ -webkit-background-size: cover;
+ -moz-background-size: cover;
+ -o-background-size: cover;
+ background-size: cover;
+}
+
+.panel-default {
+ opacity: 0.9;
+ margin-top:10px;
+}
+.form-group.last {
+ margin-bottom:0px;
+}
+.panel-heading strong{text-align: center;}
+body{background-color: #31578f;}
+
+
+
+.slider__page {
+  padding: 15px 0 150px 0;
+}
+.slider__page__title {
+  color: #fff;
+  font-size: 25px;
+  text-align: center;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+.slider {
+  margin: 0px auto;
+  position: relative;
+  width: 200px;
+  height: 100%;
+  padding: 30px 0 0 0;
+  text-align: center;
+}
+
+.slider__image {
+  width: 100px;
+  height: 100px;
+}
+
+.slider__title {
+  color: #fff;
+  font-size: 16px;
+  text-align: center;
+  font-weight: 200;
+}
+
+.slider__item {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+  display: none;
+}
+.slider__item:first-child {
+  display: block;
+}
+
+   </style>
+   
+  </head>
+  <body>
+    <div class="container">
+    <div class="row">
+        <div class="col-md-4 col-md-offset-7">
+            <div class="panel panel-default">
+                <div class="panel-heading"> <strong class="" >SISTEMA DE ALMACENES</strong>
+
+                </div>
+                <div class="panel-body">
+                    <form class="form-horizontal" role="form" method="POST">{% csrf_token %}
+                        <div class="form-group">
+                            <label for="inputEmail3" class="col-sm-3 control-label">Usuario</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="inputEmail3" placeholder="Usuario" required="" name="username">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputPassword3" class="col-sm-3 control-label">Contraseña</label>
+                            <div class="col-sm-9">
+              <input type="password" id="inputPassword" class="form-control" placeholder="Contraseña" name="password">
+                            </div>
+                        </div>
+                        <p>{% block user %}  {% endblock %} </p>
+                        <div class="form-group last">
+                            <div class="col-sm-offset-3 col-sm-9">
+                                <button type="submit" class="btn btn-success btn-sm">Ingresar</button>
+                                <!-- <button type="reset" class="btn btn-default btn-sm">Reset</button> -->
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="panel-footer">Dir: Av. Sevilla s/n <a href="#" class="">Empresa Ferroviaria Andina S.A</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="slideshow" class="slider">
+        <div class="slider__item">
+          <img class="slider__image" src="{{STATIC_URL}}img/logo.jpg" alt="" />
+          <h3 class="slider__title">
+           Potosi
+          </h3>
+        </div>
+        <div class="slider__item">
+          <img class="slider__image" src="{{STATIC_URL}}img/fca1.jpg" alt="" />
+          <h3 class="slider__title">
+            Chuquisaca
+          </h3>
+        </div>
+        <div class="slider__item">
+          <img class="slider__image" src="{{STATIC_URL}}img/fca2.jpg" alt="" />
+          <h3 class="slider__title">
+            La Paz
+          </h3>
+        </div>
+        <div class="slider__item">
+          <img class="slider__image" src="{{STATIC_URL}}img/fca3.jpg" alt="" />
+          <h3 class="slider__title">
+            Santa Cruz
+          </h3>
+        </div>
+        <div class="slider__item">
+          <img class="slider__image" src="{{STATIC_URL}}img/fca.jpg" alt="" />
+          <h3 class="slider__title">
+            Oruro
+          </h3>
+        </div>
+      </div>
+  </body>
+</html>

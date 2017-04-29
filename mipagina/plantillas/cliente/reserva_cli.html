@@ -1,0 +1,86 @@
+<script type="text/javascript">
+$('#Tipo').submit(function(e){
+		e.preventDefault();
+		var dato=$(this).serialize();
+		console.log(dato);
+		var ci = $("#id_Ci_Nit").val();
+		var tel = $("#id_Telefono").val();
+		if (ci.length >= 6){
+			if (tel.length >= 8){
+				$.ajax({
+					type:'POST',
+					url:'/reserva_cli/'+{{cod}}+'/',
+					data: dato,
+					success:function(resp){			
+						$(".modal-body").html(resp);
+					}
+				});
+			}else{
+				alert("Error el Num. de Teléfono deve ser 8 Dígitos.")
+			}
+		}else{
+			alert("Error el Num. de CI deve ser minimo 6 ó Nit Dígitos.")
+		}
+	});
+$("#loguin").on("click", function(e){
+	e.preventDefault();
+	$.ajax({
+		type:'GET',
+		url:$(this).attr("href"),
+		success:function(resp){
+			$(".modal-body").html(resp);
+		}
+	});
+});
+</script>
+	<p id="texto">Ingrese sus datos para seguir con la compra del Producto</p>
+	<span>Ya tengo cuenta </span> <a href="/loguin-cliente/" id="loguin"> Ingresar</a>
+<form method="POST" id="Tipo" class="form-horizontal" role="form">{% csrf_token %}
+
+	<div class="form-group">
+        <label class="control-label col-xs-3">Nombre(s):</label>
+        <div class="col-xs-9">
+            {{forms.Nombre_trabajador}}
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-3">Apellido(s):</label>
+        <div class="col-xs-9">
+            {{forms.Apellidos}}
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-3">Num de CI:</label>
+        <div class="col-xs-9">
+            {{forms.Ci_Nit}}
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-3">Celular:</label>
+        <div class="col-xs-9">
+            {{forms.Telefono}}
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-3">E-mail:</label>
+        <div class="col-xs-9">
+            {{forms.Email}}
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-3">Dirección:</label>
+        <div class="col-xs-9">
+            {{forms.Direccion}}
+        </div>
+    </div>
+
+<div class="input-group">
+	<button class="btn btn-success">Registrar</button>
+</div>
+</form>
+
+<style type="text/css">
+.control-label{text-align: right;}
+/*#Tipo .form-control{background-color: green; height: 30px; margin-top: 10px; margin-right: 0px;}*/
+#Tipo button{margin-left: 40px; padding: 5px 10px; border-radius: 5px;}
+</style>

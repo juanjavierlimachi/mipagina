@@ -1,0 +1,246 @@
+<script type="text/javascript">
+$("#categorias table tr td #salida").disabled;
+$(document).ready(function(){
+    $("#formu").hide();
+    $('#categorias table tr td #reserva').on( 'click', function() {
+    if( $(this).is(':checked') ){
+        var idProduco=$(this).val();
+        $.ajax({
+            type:'GET',
+            url:'/salidasRe/'+idProduco,
+            success:function(resp){
+                $("#ventanas").dialog({
+                    modal:true,
+                    show:"blind",
+                    width: 600,
+                    hide:"explode",
+                    title:"Código Producto de Ingreso:"+idProduco,
+                    position: "center"
+                }); 
+                $('#ventanas').html(resp);
+            }
+        });
+    } else {
+         // Hacer algo si el checkbox ha sido deseleccionado
+        alert("El checkbox con valor " + $(this).val() + " ha sido deseleccionado");
+    }
+
+});
+    
+$('#cate').on('change',inicio);
+    function inicio(){
+        var id = $(this).val();
+        console.log(id); //aki vemos k el id se esta inprimiendo
+        $.ajax({
+            type: 'GET',
+            url:"/por_categorias/"+id+"",
+            beforeSend:Espera,
+            success: function(data){
+                console.log(data);
+                $('#categorias').html(data);
+            }
+        });
+        function Espera(){
+        $("#categorias").html('<img src="{{STATIC_URL}}img/log.gif" id="icono"></img><br>Procesando...');
+      }
+    }
+$('#stock').on('change',stock);
+    function stock(){
+        var id = $(this).val();
+        console.log(id); //aki vemos k el id se esta inprimiendo
+        $.ajax({
+            type: 'GET',
+            url:"/stock_de_productos/"+id+"",
+            beforeSend:Espera,
+            success: function(data){
+                console.log(data);
+                $('#categorias').html(data);
+            }
+        });
+        function Espera(){
+        $("#categorias").html('<img src="{{STATIC_URL}}img/log.gif" id="icono"></img><br>Procesando...');
+      }
+    }
+
+var tbuscar=$("#Pro").attr('autocomplete','off');
+      tbuscar.keypress(buscarProducto);
+      function buscarProducto(){
+          $.ajax({
+              type:'GET',
+              url:'/buscarProducto_Reserva/',
+              data:$("#BusquedaR").serialize(),
+              success:resultado,
+              error:errores
+          });
+        console.log($("#Busqueda").serialize());
+      }
+        function resultado(data){
+            $("#DatosAjax").fadeIn("slow");
+            console.log(data);
+            $("#DatosAjax").html(data);
+        }
+        function errores(){
+            alert("Error");
+        }
+
+      $("#BusquedaR").on("submit",function(e){
+        e.preventDefault();
+        var datos=$(this).serialize();
+        //alert(datos);
+          $.ajax({
+              type:"POST",
+              url:"/buscarProducto_view/",
+              data:datos,
+              success:function(resp){
+                $("#categorias").fadeIn("slow");
+                //alert(resp);
+                //$("#categorias").html(resp);
+                $("#DatosAjax").html(resp);
+              }
+          });
+      });
+
+  //$("table tr td #kar").attr("id","cambiado");
+
+});
+function update_pro(){
+    $.ajax({
+      type:'GET',
+      url:'/VerProductos/',
+      beforeSend:Espera,
+      success:function(resp){
+          $("#FormAjax").html(resp);
+      }
+  });
+      function Espera(){
+        $("#FormAjax").html('<img src="{{STATIC_URL}}img/log.gif" id="icono"></img><br>Procesando...');
+      }
+}
+function InpremeDatos(){
+    $.ajax({
+      type:'GET',
+      url:'/get_retorna_salidas/',
+      beforeSend:Espera,
+      success:function(resp){
+          $("#FormAjax").html(resp);
+      }
+  });
+      function Espera(){
+        $("#FormAjax").html('<img src="{{STATIC_URL}}img/log.gif" id="icono"></img><br>Procesando...');
+      }
+}
+function Files(){
+    $("#ventanas").dialog({
+            modal:true,
+            show:"blind",
+            width: 600,
+            hide:"explode",
+            title:"Detalle:",
+            position: "center"
+        }); 
+    $.ajax({
+        type:'GET',
+        url:'/uploadFiles/',
+        success:function(resp){
+            $('#ventanas').html(resp);
+        }
+    });
+}
+function VerImg(){
+  //alert("ya te mostrare la imagen");
+}
+function update_session(){
+  $("#ventanas").text("Esta seguro de limpiar la Bandeja de Movimientos?");
+  $("#ventanas").dialog({
+     modal:true,
+        show:"blind",
+        width: 600,
+        hide:"explode",
+        title:"Detalle:",
+        position: "center",
+        resizable: false,
+        buttons: [
+          {
+            text: "Si",
+            click: function() {
+              $.ajax({
+                type:'GET',
+                url:'/update_session/',
+                success:function(resp){
+                  $("#ventanas").html(resp);
+                    $.ajax({
+                      type:'GET',
+                      url:'/cantidadIngresos/',
+                      success:function(resp){
+                        $(".tasks-menu .label-danger").html(resp);
+                        $(".ui-dialog-buttonpane").hide();
+                      }
+                    });
+
+                    $.ajax({
+                      type:'GET',
+                      url:'/cantidadSalida/',
+                      success:function(resp){
+                        $(".notifications-menu .label-warning").html(resp);
+                        $(".ui-dialog-buttonpane").hide();
+                      }
+                    });
+                }
+              });
+            }
+          }
+        ]
+      });
+}
+function borrado(){
+  $.ajax({
+    type:'GET',
+    url:'/update_session/',
+    success:function(resp){
+      $("#ventanas").html(resp);
+    }
+  });
+}
+</script>
+<div id="categorias">
+<table class="table table-hover table-striped">
+<tr class="success">
+    <td>Cod</td>
+    <td>Nombre Producto</td>
+    <td>Marca</td>
+    <td>Procio Unitario</td>
+    <td>Categoria</td>
+    <td>Stock</td> 
+    <td>Reserva</td>
+    <td>Estado</td>
+</tr>
+		<tr><td><a href="/ok/" id="{{producto.id}}">{{producto.id}}</a></td>
+			<td>{{producto.Nombre_producto}}</td>
+			<td>{{producto.Marca}}</td>
+			<td>{{producto.Precio_producto}}</td>
+			<td>{{producto.Categoria}}</td>
+		
+			<td>{% if producto.Stock < 10 %}
+                    <p style="background:LightCoral;margin-top: 0px;margin-bottom: 0px;">{{producto.Stock}}</p>
+                {% endif %}
+                {% if producto.Stock >= 10 and producto.Stock < 25 %}
+                    <p style="background:Khaki;margin-top: 0px;margin-bottom: 0px;">{{producto.Stock}}</p>    
+                {% endif %}
+                {% if producto.Stock >= 25 %}
+                    <p style="background:SpringGreen;margin-top: 0px;margin-bottom: 0px;">{{producto.Stock}}</p>    
+                {% endif %}
+            </td>
+			<td>
+				 <input name="reserva" id="reserva" type="checkbox" value="{{producto.id}}" />
+            </td>
+			<td>{% if producto.estado == 0 %}
+			<span><img src="/static/img/icon_success.gif"></span>
+				{% else %}
+			<span><img src="/static/img/icon_error.gif"></span>
+				{% endif %}
+			</td>
+		</tr>
+<tr><td></td><!-- <td><a href="/IngresaProducto/" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span>Ingresar Productos</a></td> --></tr>
+</table>
+</div>
+<script type="text/javascript" src="{{STATIC_URL}}js/modales.js"></script>

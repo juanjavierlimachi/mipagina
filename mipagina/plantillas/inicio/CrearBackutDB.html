@@ -1,0 +1,25 @@
+<script type="text/javascript">
+$('#Tipo').submit(function(e){
+		e.preventDefault();
+		var dato=$(this).serialize();
+		console.log(dato);
+		$.ajax({
+			type:'POST',
+			url:'/CrearBackutDB/',
+			data: dato,
+			success:function(resp){
+				console.log(resp);
+				$('#FormAjax').html(resp);
+				
+			}
+		});
+	});
+
+</script>
+<div class="card">
+    <p id="texto">Crear Backup de la Base de Datos</p>
+ <form method="POST" id="Tipo" enctype="multipart/form-data"> {% csrf_token %}
+                {{form}}<br>
+    <button class="btn btn-success">Enviar</button>
+  </form>
+</div> 

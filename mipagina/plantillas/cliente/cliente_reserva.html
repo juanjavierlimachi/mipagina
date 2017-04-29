@@ -1,0 +1,42 @@
+
+<style type="text/css">
+#p {
+    float: right;
+    margin-top: -25px;
+    width: 150px;
+    height: 160px;
+    margin-right: 10px;
+    border-radius: 7px;
+}
+p{margin-bottom: 0px;height: 25px;margin-left: 10px;}
+#cantidad{width: 70px;height: 30px;}
+.modal-footer .btn{padding: 5px 10px; border-radius: 5px;}
+</style>
+<div class="input-group">Producto: {{producto.Nombre_producto}}</div>
+<img src="{{MEDIA_URL}}{{producto.archivo}}" id="p">
+<div class="input-group">Precio:{{producto.Precio_producto}}</div>
+<div class="input-group">Categoria: {{producto.Categoria}}</div>
+<div class="input-group">Disponible desde la fecha:{{producto.fecha_registro|date}}</div>
+<div class="input-group">Material: Madera Roble</div>
+<div class="input-group">Cantidad: <input type="number" value="1" id="cantidad" min="1" name="cantidad"></div>
+<div class="input-group"></div>
+<div class="modal-footer">
+	<a href="/reserva_cli/{{producto.id}}/" class="btn btn-success" id="{{producto.id}}">Resevar</a>
+	<a href="#" data-dismiss="modal" class="btn">Cerrar</a>
+</div>
+<script type="text/javascript">
+$(function(){
+	$(".modal-footer .btn-success").on("click", function(e){
+		e.preventDefault();
+		var ids = $(this).attr("id");
+		$.ajax({
+			type:'GET',
+			url:$(this).attr("href"),
+			data:{'cantidad':$("#cantidad").val()},
+			success:function(resp){
+				$(".modal-body").html(resp);
+			}
+		});
+	});
+});
+</script>

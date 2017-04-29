@@ -1,0 +1,48 @@
+
+<script type="text/javascript">
+$('#Tipo').submit(function(e){
+		e.preventDefault();
+		var dato=$(this).serialize();
+		console.log(dato);
+		var ci = $("#id_Nit").val();
+		var tel = $("#id_Telefono").val();
+		if (ci.length >= 6){
+			if (tel.length >= 8){
+				$.ajax({
+					type:'POST',
+					url:'/NewProveedor/',
+					data: dato,
+					success:function(resp){
+						console.log(resp);
+						//$('#FormAjax').html(resp);
+						if (resp=='ok'){
+								$.ajax({
+								     type:'GET',
+								     url:'/VerPrveedor/',
+								     beforeSend:Espera,
+								     success:function(resp){
+								      	$("#FormAjax").html(resp);
+								      }
+								    });
+								    function Espera(){
+								       $("#FormAjax").text("Procesando");
+								    }
+							}
+							else{alert("El dato es Incorrecto.")}
+					}
+				});
+			}else{
+				alert("Error el Num. de Teléfono deve ser 8 Dígitos.")
+			}
+		}else{
+			alert("Error el Num. de Nit deve ser minimo 6 Dígitos.")
+		}
+	});
+</script>
+<div class="card">
+	<p id="texto">Registro Proveedor</p>
+<form method='POST' id='Tipo'>{% csrf_token %}
+{{forms}}<br>
+<button class="btn btn-success">Registrar</button>
+</form>
+</div>

@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>.:Sistema:.</title>
+    <link href="{{STATIC_URL}}css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{STATIC_URL}}css/metisMenu.min.css" rel="stylesheet">
+    <link href="{{STATIC_URL}}css/timeline.css" rel="stylesheet">
+    <link href="{{STATIC_URL}}css/sb-admin-2.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/formularios.css">
+    <link href="{{STATIC_URL}}css/morris.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{STATIC_URL}}css/jquery-ui.css" />
+    <!-- Custom Fonts -->
+    <link href="{{STATIC_URL}}css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <script type="text/javascript">
+  function updatePerfilUser(){
+    $.ajax({
+      type:'GET',
+      url:'/editarperfil/',
+      beforeSend:Espera,
+      success:function(resp){
+        $("#FormAjax").html(resp);
+      }
+    });
+     function Espera(){
+      $("#FormAjax").html('<img src="{{STATIC_URL}}img/log.gif" id="icono"></img><br>Procesando...');
+    }
+  }
+  function NewUser(){
+    $.ajax({
+      type:'GET',
+      url:'/nuevo/',
+      beforeSend:Espera,
+      success:function(resp){
+        $("#FormAjax").html(resp);
+      }
+    });
+     function Espera(){
+      $("#FormAjax").html('<img src="{{STATIC_URL}}img/log.gif" id="icono"></img><br>Procesando...');
+    }
+  }
+function DatosUser(){
+    $.ajax({
+      type:'GET',
+      url:'/DatosUsuario/',
+      beforeSend:Espera,
+      success:function(resp){
+        $("#FormAjax").html(resp);
+      }
+    });
+    function Espera(){
+      $("#FormAjax").html('<img src="{{STATIC_URL}}img/log.gif" id="icono"></img><br>Procesando...');
+    }
+  }
+  function NewCategoria(){
+    $.ajax({
+      type:'GET',
+      url:'/newCategoria/',
+      beforeSend:Espera,
+      success:function(resp){
+          $("#FormAjax").html(resp);
+      }
+    });
+    function Espera(){
+      $("#FormAjax").html('<img src="{{STATIC_URL}}img/log.gif" id="icono"></img><br>Procesando...');
+    }
+  }
+  function VerCategorias(){
+    $.ajax({
+      type:'GET',
+      url:'/verCategoria/',
+      beforeSend:Espera,
+      success:function(resp){
+          $("#FormAjax").html(resp);
+      }
+    });
+    function Espera(){
+      $("#FormAjax").html('<img src="{{STATIC_URL}}img/log.gif" id="icono"></img><br>Procesando...');
+    }
+  }
+  function NewProduct(){
+    $.ajax({
+      type:'GET',
+      url:'/NewProducto/',
+      beforeSend:Espera,
+      success:function(resp){
+          $("#FormAjax").html(resp);
+      }
+    });
+    function Espera(){
+      $("#FormAjax").html('<img src="{{STATIC_URL}}img/log.gif" id="icono"></img><br>Procesando...');
+    }
+  }
+  function VerProduct(){
+    $.ajax({
+      type:'GET',
+      url:'/VerProductos/',
+      beforeSend:Espera,
+      success:function(resp){
+          $("#FormAjax").html(resp);
+      }
+    });
+    function Espera(){
+      $("#FormAjax").html('<img src="{{STATIC_URL}}img/log.gif" id="icono"></img><br>Procesando...');
+    }
+  }
+  function NewClient(){
+    $.ajax({
+      type:'GET',
+      url:'/NewClient/',
+      beforeSend:Espera,
+      success:function(resp){
+          $("#FormAjax").html(resp);
+      }
+    });
+    function Espera(){
+      $("#FormAjax").html('<img src="{{STATIC_URL}}img/log.gif" id="icono"></img><br>Procesando...');
+    }
+  }
+  function VerClientes(){
+    $.ajax({
+      type:'GET',
+      url:'/VerClientes/',
+      beforeSend:Espera,
+      success:function(resp){
+        $("#FormAjax").html(resp);
+      }
+    });
+    function Espera(){
+       $("#FormAjax").html('<img src="{{STATIC_URL}}img/log.gif" id="icono"></img><br>Procesando...');
+    }
+  }
+   function NewProveedorr(){
+    $.ajax({
+      type:'GET',
+      url:'/NewProveedor/',
+      beforeSend:Espera,
+      success:function(resp){
+          $("#FormAjax").html(resp);
+      }
+    });
+    function Espera(){
+      $("#FormAjax").html('<img src="{{STATIC_URL}}img/log.gif" id="icono"></img><br>Procesando...');
+    }
+  }
+  function VerProveedores(){
+    $.ajax({
+      type:'GET',
+      url:'/VerPrveedor/',
+      beforeSend:Espera,
+      success:function(resp){
+        $("#FormAjax").html(resp);
+      }
+    });
+    function Espera(){
+       $("#FormAjax").html('<img src="{{STATIC_URL}}img/log.gif" id="icono"></img><br>Procesando...');
+    }
+  }
+  function IngresoPro(){
+    $.ajax({
+      type:'GET',
+      url:'/inProduct/',
+      beforeSend:Espera,
+      success:function(resp){
+        $("#FormAjax").html(resp);
+      }
+    });
+    function Espera(){
+       $("#FormAjax").html('<img src="{{STATIC_URL}}img/log.gif" id="icono"></img><br>Procesando...');
+    }
+  }
+  function SalidaPro(){
+    $.ajax({
+      type:'GET',
+      url:'/outProduct/',
+      beforeSend:Espera,
+      success:function(resp){
+        $("#FormAjax").html(resp);
+      }
+    });
+    function Espera(){
+       $("#FormAjax").html('<img src="{{STATIC_URL}}img/log.gif" id="icono"></img><br>Procesando...');
+    }
+  }
+  function CapturaQR(){
+  $.ajax({
+        type:'GET',
+        url:'/captura_qr/',
+        beforeSend:Espera,
+        success:function(resp){
+            $('#FormAjax').html(resp);
+        }
+    });
+  function Espera(){
+       $("#FormAjax").html('<img src="{{STATIC_URL}}img/log.gif" id="icono"></img><br>Procesando...');
+    }
+}
+function CrearBackut(){
+  $.ajax({
+        type:'GET',
+        url:'/CrearBackutDB/',
+        beforeSend:Espera,
+        success:function(resp){
+            $('#FormAjax').html(resp);
+        }
+    });
+  function Espera(){
+       $("#FormAjax").html('<img src="{{STATIC_URL}}img/log.gif" id="icono"></img><br>Procesando...');
+    }
+}
+function Estadisticos(){
+    $.ajax({
+      type:'GET',
+      url:'/estadistico/',
+      beforeSend:Espera,
+      success:function(resp){
+        $("#FormAjax").html(resp);
+      }
+    });
+    function Espera(){
+       $("#FormAjax").html('<img src="{{STATIC_URL}}img/log.gif" id="icono"></img><br>Procesando...');
+    }
+}
+function NewReserva(){
+  $.ajax({
+    type:'GET',
+    url:'/newReserva/',
+    beforeSend:Espera,
+    success:function(resp){
+      $("#FormAjax").html(resp);
+    }
+  });
+  function Espera(){
+    $("#FormAjax").html('<img src="{{STATIC_URL}}img/log.gif" id="icono"></img><br>Procesando...');
+  }
+}
+function VerReserva(){
+  $.ajax({
+    type:'GET',
+    url:'/ver_reservas/',
+    beforeSend:Espera,
+    success:function(resp){
+      $("#FormAjax").html(resp);
+    }
+  });
+  function Espera(){
+    $("#FormAjax").html('<img src="{{STATIC_URL}}img/log.gif" id="icono"></img><br>Procesando...');
+  }
+}
+function KardexGeneral(){
+  $.ajax({
+    type:'GET',
+    url:'/KardexGeneral/',
+    beforeSend:Espera,
+    success:function(resp){
+      $("#FormAjax").html(resp);
+    }
+  });
+  function Espera(){
+    $("#FormAjax").html('<img src="{{STATIC_URL}}img/log.gif" id="icono"></img><br>Procesando...');
+  }
+}
+  </script>
+  <style type="text/css">
+    #DatosAjax{
+       width: 500px; margin: auto;position: absolute; background: white;margin-top: 10px;
+       margin-top: 40px;float: right;margin-left: 300px;
+    }
+    #wrapper .navbar-static-top{background-color: #31578f;}
+    #navbar-brand{color: white}
+    .navbar-default .navbar-brand{color: white;}
+    #portada{margin: auto; margin-left: 180px;margin-top: 40px;}
+
+  </style>
+</head>
+
+<body>
+    <div id="wrapper">
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">SISTEMA DE ALMACENES</a>
+            </div>
+            <!-- /.navbar-header -->
+            <ul class="nav navbar-top-links navbar-right">  
+        <li class="dropdown notifications-menu">
+            <!-- Menu toggle button -->
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" title="Salidas">
+              <i class="glyphicon glyphicon-arrow-up"></i>
+              <span class="label label-warning">{{contidadPro}}</span>
+            </a>
+             <ul class="dropdown-menu">
+              <li class="header">   <!-- un dato-->  </li>
+              <li>
+               
+                <ul class="menu">
+                 <!--aki enviare las salidas q realiza el usuario-->
+                    {% if salidas_new|length == 0 %}
+                      
+                      {% else %}
+                      <table border='1' style="width: 250px;margin-right: 10px;">
+                        <tr><td colspan="4" align='center'><br>Trabajador:{{traba|upper}}</td></tr>
+                        <tr><td align='center'><br>Detalle</td>
+                          <td align='center'><br>Cantidad</td>
+                          <td align='center'><br>Precio</td>
+                          <td align='center'><br>Total</td>
+                        </tr>
+                        {% for i in salidas_new %}
+
+                          {% for j in productoss %}
+                            {% if i == j.id %}
+                                <tr><td align='center'><br>{{j.producto}}</td>
+                                  <td align='center'><br>{{j.cantidad}}</td>
+                                  <td align='center'><br>{{j.Precio_unidad}}</td>
+                                  <td align='center'><br>{{j.total}}</td>
+                                </tr>
+                              {% endif %}
+                          {% endfor %}
+                        {% endfor %}
+                        <tr>
+                        <td align='center'><br>Total:{{total_pago}}</td>
+                      </tr>
+                      </table>
+                      {% endif %}
+                </ul>
+              </li>
+
+      <li class="footer" id="aviso"><a href="/get_retorna_salidas/" target="_blank">Imprimir Salida</a></li>
+            </ul> 
+          </li>
+      <li class="dropdown messages-menu">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" title="Reservas">
+              <i class="glyphicon glyphicon-sort"></i>
+              <span class="label label-success">0</span>
+            </a>
+            <ul class="dropdown-menu">
+              <li>
+                <ul class="menu">
+                  <!-- aki va las reservas -->
+                  </li>
+                </ul>
+              </li>
+              <li class="footer"><a href="/get_retorna_reservas_view/" target="_blank">Imprimir Reserva</a></li>
+            </ul>
+          </li>
+<!-- /.resevas -->
+                <!-- /.dropdown -->
+                <li class="dropdown tasks-menu">
+            <!-- Menu Toggle Button -->
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" title="Ingresos">
+              <i class="glyphicon glyphicon-arrow-down"></i>
+              <span class="label label-danger">{{ingresos}}</span>
+            </a>
+            <ul class="dropdown-menu">
+              <li class="header">  <!-- un dato-->  </li>
+              <li>
+                <!-- salidas -->
+                <ul class="menu">
+                  {% if ingresos_new|length == 0 %}
+                       
+                        {% else %}
+                        <table border='1'>
+                          <tr><td colspan="4" align='center'><br>Trabajador:{{traba|upper}}</td></tr>
+                          <tr><td align='center'><br>Detalle</td>
+                            <td align='center'><br>Cantidad</td>
+                            <td align='center'><br>Precio</td>
+                            <td align='center'><br>Total</td>
+                          </tr>
+                          {% for i in ingresos_new %}
+                            {% for j in productoss %}
+                              {% if i == j.id %}
+                                  <tr><td align='center'><br>{{j.producto}}</td>
+                                    <td align='center'><br>{{j.cantidad}}</td>
+                                    <td align='center'><br>{{j.Precio_unidad}}</td>
+                                    <td align='center'><br>{{j.total}}</td>
+                                  </tr>
+                                {% endif %}
+                            {% endfor %}
+                          {% endfor %}
+                          <tr>
+                          <td align='center'><br>Total:{{total_pago}}</td>
+                        </tr>
+                        </table>
+                        {% endif %}
+                </ul>
+              </li>
+              <li class="footer">
+                <a href="/get_retorna_ingresos/" target="_blank">Imprimir Ingreso</a>
+              </li>
+            </ul>
+          </li>
+                <!-- /.dropdown -->
+                <li class="dropdown user user-menu">
+            <!-- Menu Toggle Button -->
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <!-- The user image in the navbar-->
+              <!-- hidden-xs hides the username on small devices so only the image appears. -->
+              <span class="glyphicon glyphicon-user">         {{user.get_full_name|upper}}</span>
+            </a>
+            <ul class="dropdown-menu">
+              <!-- The user image in the menu -->
+              <li class="user-header">
+                <p>
+                   {% if user.is_superuser %}
+                      Administrador: <br>{{user.get_full_name|upper}}<br>
+                      <small>{{now}}</small>
+                  {% else %}
+                    Supervisor: <br>{{user.get_full_name|upper}}<br>
+                      <small>{{now}}</small>
+                  {% endif %}
+                </p>
+              </li>
+              <!-- Menu Body -->
+              <li class="user-body">
+             
+              </li>
+              <!-- Menu Footer-->
+              <li class="user-footer">
+                <div class="pull-left">
+                  <a href="#" onclick="updatePerfilUser()" class="btn btn-default">Perfil</a>
+                </div>
+                <div class="pull-right">
+                  <a href="/cerrar/" class="btn btn-default">Salir</a>
+                </div>
+              </li>
+            </ul>
+          </li>
+                <!-- /.dropdown -->
+            </ul>
+            <!-- /.navbar-top-links -->
+
+            <div class="navbar-default sidebar" role="navigation">
+                <div class="sidebar-nav navbar-collapse">
+                    <ul class="nav" id="side-menu">
+                        <li class="sidebar-search">
+                            <div class="input-group custom-search-form">
+                                <form action="/buscar/" method="post" id="fbuscar" class="sidebar-form">{% csrf_token %}
+                                <div class="input-group">
+                                  <input type="text" name="q" id="id_texto" class="form-control" title=" Buscar Trabajador" placeholder="Nombre, Apellido, Ci/nit," required>
+                                      <span class="input-group-btn">
+                                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><span class="glyphicon glyphicon-search"></span>
+                                        </button>
+                                      </span>
+                                </div>
+                              </form>
+                            </span>
+                            </div>
+                            <!-- /input-group -->
+                        </li>
+                        <li>
+                            <a href="/">
+                                <span class="glyphicon glyphicon-home"></span>            Inicio</a>
+                        </li>
+                        <li>
+                            <a href="#"><span class="glyphicon glyphicon-shopping-cart"></span>                  Productos<!-- <span class="glyphicon glyphicon-chevron-left"></span> --></a>
+                            <ul class="nav nav-second-level">
+                               <li><a href="#" onclick="NewProduct()">Nuevo Producto</a></li>
+                                <li><a href="#" onclick="VerProduct()">Ver Productos</a></li>
+                                {% if user.is_superuser %}
+                                <li><a accept="image/*"  type="file" capture onclick="CapturaQR()" >Registro QR</a></li>
+                                {% endif %}
+
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                         <li>
+                            <a href="#"><span class="glyphicon glyphicon-align-center"></span>                     Categorias</a>
+                            <ul class="nav nav-second-level">
+                                <li><a href="#" onclick="NewCategoria()">Nueva Categoria</a></li>
+                                <li><a href="#" onclick="VerCategorias()">Ver categorias</a></li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                         <li>
+                            <a href="#"><span class="glyphicon glyphicon-folder-open"></span>                            Proveedores</a>
+                            <ul class="nav nav-second-level">
+                                 <li><a href="#" onclick="NewProveedorr()">Nuevo Proveedor</a></li>
+                                 <li><a href="#" onclick="VerProveedores()">Ver Proveedores</a></li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                        <li>
+                            <a href="#"><span class="glyphicon glyphicon-briefcase"></span>              Trabajadores</a>
+                            <ul class="nav nav-second-level">
+                                <li><a href="#" onclick="NewClient()">Nuevo Trabajador</a></li>
+                                <li><a href="#" onclick="VerClientes()">Ver Trabajadores</a></li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                        <li>
+                            <a href="#"><span class="glyphicon glyphicon-log-out"></span>                 Reporte de Movimiento</a>
+                            <ul class="nav nav-second-level">
+                                <li><a href="#" onclick="IngresoPro()">Ingresos de Productos</a></li>
+                                <li><a href="#" onclick="SalidaPro()">Salidas de productos</a></li>
+                                <li><a href="#" onclick="Estadisticos()">Reporte Estadistico</a></li>
+                                 <li><a href="#" onclick="KardexGeneral()">Ver Kardex General</a></li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                        <li>
+                            <a href="#"><span class="glyphicon glyphicon-folder-open"></span>                                      Pedidos</a>
+                            <ul class="nav nav-second-level">
+                                 <li><a href="#" onclick="NewReserva()">Nueva Pedido</a></li>
+                                 <li><a href="#" onclick="VerReserva()">Ver Pedidos</a></li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                        <li>
+                            <a href="#"><span class="glyphicon glyphicon-user"></span>                           Usuarios</a>
+                            <ul class="nav nav-second-level">
+                                <li><a href="#" onclick="NewUser()">Nuevos Usuario</a></li>
+                                <li><a href="#" onclick="DatosUser()" >Ver Usuarios</a></li>
+                            </ul>
+                        </li>
+                        {% if user.is_superuser %}
+                        <li>
+                            <a href="#"><span class="glyphicon glyphicon-cog"></span>                           Seguridad</a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="#" onclick="CrearBackut()">Crear Backup</a>
+                                </li>
+                                <li>
+                                   <a href="https://www.youtube.com/watch?v=9j-fv6TAGvc" target="_blank">Manual de Usuario</a>
+                                </li>
+                                <li>
+                                   <a href="/portada/" target="_blank">Ir al Portal Web</a>
+                                </li>
+                                <!-- <li>
+                                    <a href="#">Third Level <span class="fa arrow"></span></a>
+                                    <ul class="nav nav-third-level">
+                                        <li>
+                                            <a href="#">Third Level Item</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Third Level Item</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Third Level Item</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Third Level Item</a>
+                                        </li>
+                                    </ul>
+                                   
+                                </li> -->
+                            </ul>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </div>
+                <!-- /.sidebar-collapse -->
+            </div>
+            <!-- /.navbar-static-side -->
+        </nav>
+
+        <div id="page-wrapper">
+        <div id="DatosAjax"></div>
+        <div id="FormAjax"></div>
+        <div id="ventanas"></div>
+        <div id="movimiento"></div>
+        <img id="portada" src="/static/img/logo.jpg">
+      <!-- Your Page Content Here -->
+            <div class="row">
+                <div class="col-lg-8">
+                   
+                       
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <div id="morris-area-chart"></div>
+                        </div>
+                        <!-- /.panel-body -->
+                  
+                    <!-- /.panel -->
+                    <div class="panel panel-default">
+                       
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <div class="row">
+                             
+                                <!-- /.col-lg-4 (nested) -->
+                                <div class="col-lg-8">
+                                    <div id="morris-bar-chart"></div>
+                                </div>
+                                <!-- /.col-lg-8 (nested) -->
+                            </div>
+                            <!-- /.row -->
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                 
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-8 -->
+                <div class="col-lg-4">
+                  
+                    <!-- /.panel -->
+                    <div class="panel panel-default">
+                      
+                        <div class="panel-body">
+                            <div id="morris-donut-chart"></div>
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                   
+                    <!-- /.panel .chat-panel -->
+                </div>
+                <!-- /.col-lg-4 -->
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+    <!-- jQuery -->
+    <script src="{{STATIC_URL}}js/jquery.min.js"></script>
+    <script src="{{STATIC_URL}}js/jQuery-2.2.0.min.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{{STATIC_URL}}js/bootstrap.min.js"></script>
+
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="{{STATIC_URL}}js/metisMenu.min.js"></script>
+
+    <!-- Morris Charts JavaScript -->
+    <script src="{{STATIC_URL}}js/raphael-min.js"></script>
+    <script src="{{STATIC_URL}}js/morris.min.js"></script>
+    <script src="{{STATIC_URL}}js/morris-data.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="{{STATIC_URL}}js/sb-admin-2.js"></script>
+    <script type="text/javascript" src="{{STATIC_URL}}js/modales.js"></script>
+<script src="{{STATIC_URL}}js/jquery-ui.js"></script>
+    <script type="text/javascript">
+    $(function(){
+        $('.row').hide();
+        $('#portada').hide(3000);
+    });
+    </script>
+    <script type="text/javascript">
+$(document).ready(Sheart);
+    function Sheart(){ 
+      var tbuscar=$("#id_texto").attr('autocomplete','off');
+      tbuscar.keypress(buscar);
+  }
+  function buscar(){
+    $.ajax({
+        type:'GET',
+        url:'/buscar/',
+        data:$("#fbuscar").serialize(),
+        success:resultado,
+        error:errores
+    });
+    console.log($("#fbuscar").serialize());
+}
+function resultado(data){
+    $("#DatosAjax").fadeIn("slow");
+    console.log(data);
+    $("#DatosAjax").html(data);
+}
+function errores(){
+    alert ("Error");
+}
+$("#fbuscar").on("submit",function(e){
+        e.preventDefault();
+        var datos=$(this).serialize();
+        //alert(datos);
+          $.ajax({
+              type:"POST",
+              url:"/buscar/",
+              data:datos,
+              success:function(resp){
+                $(".resultados").fadeIn("slow");
+                //alert(resp);
+                $("#DatosAjax").html(resp);
+                
+              }
+          });
+      });
+
+$("#DatosAjax ul li a").click(function(){
+    alert($(this).attr("href"));
+    return false;
+  });
+
+</script>
+</body>
+
+</html>

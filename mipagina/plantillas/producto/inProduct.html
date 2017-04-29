@@ -1,0 +1,136 @@
+<script type="text/javascript">
+$("#Busqueda").on("submit",function(e){
+        e.preventDefault();
+        var inicio = $("#ini").val();
+        var fin = $("#fin").val();
+        if (Date.parse(inicio)> Date.parse(fin)){
+        	alert("Error la fecha Inicio de deve ser Maryor");
+        }
+        else{
+        	var datos=$(this).serialize();
+        //alert(datos);
+	          $.ajax({
+	              type:"POST",
+	              url:"/inProduct/",
+	              data:datos,
+	              success:function(resp){
+	                $(".table-responsive").fadeIn("slow");
+	                //alert(resp);
+	                //$("#categorias").html(resp);
+	                $(".table-responsive").html(resp);
+	              }
+	          });
+         }
+      });
+$( function() {
+    $( "#ini" ).datepicker({
+    	prevText: '<Ant',
+		 nextText: 'Sig>',
+		 currentText: 'Hoy',
+		 monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+		 monthNamesShort: ['Ene','Feb','Mar','Abr', 'May','Jun','Jul','Ago','Sep', 'Oct','Nov','Dic'],
+		 dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+		 dayNamesShort: ['Dom','Lun','Mar','Mié','Juv','Vie','Sáb'],
+		 dayNamesMin: ['Do','Lu','Ma','Mi','Ju','Vi','Sá'],
+		 weekHeader: 'Sm',
+		 dateFormat: 'dd/mm/yy',
+		 firstDay: 1,
+		 isRTL: false,
+		 showMonthAfterYear: false,
+		 yearSuffix: ''
+    });
+    $( "#fin" ).datepicker({
+    	prevText: '<Ant',
+		 nextText: 'Sig>',
+		 currentText: 'Hoy',
+		 monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+		 monthNamesShort: ['Ene','Feb','Mar','Abr', 'May','Jun','Jul','Ago','Sep', 'Oct','Nov','Dic'],
+		 dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+		 dayNamesShort: ['Dom','Lun','Mar','Mié','Juv','Vie','Sáb'],
+		 dayNamesMin: ['Do','Lu','Ma','Mi','Ju','Vi','Sá'],
+		 weekHeader: 'Sm',
+		 dateFormat: 'dd/mm/yy',
+		 firstDay: 1,
+		 isRTL: false,
+		 showMonthAfterYear: false,
+		 yearSuffix: ''
+    });
+  } );
+function InprimirIngreso(){
+	var inicio = $("#ini").val();
+	var fin = $("#fin").val();
+	var user = $("#user").val();
+	if(inicio=='' || fin =='' || user == '' || !isNaN(inicio) || !isNaN(fin)){
+		alert("Por favor Ingrese la fecha correctamente.");
+		$("#ini").focus();
+		return false
+	}
+	else{
+		var ii =inicio.split('/');//la conveti en un array
+		var a = ii[0]+"-"+ii[1]+"-"+ii[2];
+		var ff = fin.split('/')
+		var b = ff[0]+"-"+ff[1]+"-"+ff[2];
+		window.open("/ImprimiarIngresos/"+user+"/"+a+"/"+b+"/");
+	}
+}
+</script>
+<script type="text/javascript" src="{{STATIC_URL}}js/modales.js"></script>
+<style type="text/css">
+#controles{left: 30px}
+#controles select{margin: inherit;}
+#controles form{width: 100%;float: left;margin-left:  0px;}
+#controles form input{width: 25%;float: left;}
+</style>
+<div id="controles">
+	<div class="btn-group">
+	<form method="POST" id="Busqueda">{% csrf_token %}
+	   <input type="text" name="inicio" id="ini" placeholder="DD/MM/AA (Desde)" class="form-control" title="Ingrese una fecha" required/>
+	   <input type="text" name="final" id="fin" placeholder="DD/MM/AA (Hasta)" class="form-control" title="Ingrese una fecha" required/>
+	    <select name="user" id="user">
+	    	{% for i in usuarios %}
+	    	<option value="{{i.id}}">{{i.Nombre_Razon_Social}}</option>
+	    	{% endfor %}
+	    </select>
+	    <button class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
+	    <a href="#" button type="button" onclick="InprimirIngreso()"class="btn btn-default">
+ <span class="glyphicon glyphicon-print"></span> Imprimir</a>
+	</form>
+	</div>
+</div>
+<div class="table-responsive">
+<table class="table table-hover table-striped">
+	<tr><td colspan="7" align="center">LISTA DE INGRESOS DE PRODUCTOS DEL MES {% now "m" %}</td></tr>
+<tr class="success"><td>Producto</td>
+	<td>Cantidad</td>
+	<td>Precio</td>
+	<td>total</td>
+	<td>Proveedor</td>
+	<td>Fecha y hora de Registro</td>
+	<td>Estado</td>
+</tr>
+{% for i in ingresos %}
+<tr>
+	<td>{{i.producto}}</td>
+	<td>{{i.cantidad}}</td>
+	<td>{{i.Precio_unidad}}</td>
+	<td>{{i.total}}</td>
+	<td>{{i.proveedor}}</td>
+	<td>{{i.fecha_registro}}</td>
+	
+	<td>{% if i.estado == 0 %}
+	<span><a href="/deleteSalidas/{{i.id}}/"><img src="/static/img/icon_success.gif"></a></span>
+		{% else %}
+	<span><a href="/deleteIngresosRecuperar/{{i.id}}/"><img src="/static/img/icon_error.gif"></span>
+		{% endif %}
+	</td>
+</tr>
+{% endfor %}
+<tr> <td>Registros:{{t_ingresos}}</td></tr>
+</table>
+
+
+<!-- <ul class="pager">
+  <li><a href="#"> &larr;Anterior</a></li>
+  <li><a href="#">Siguiente &rarr;</a></li>
+</ul> -->
+</div>

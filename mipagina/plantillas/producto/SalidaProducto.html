@@ -1,0 +1,67 @@
+<script type="text/javascript">
+$('#Tipoo').submit(function(e){
+		e.preventDefault();
+		var datos=$(this).serialize();
+		console.log(datos);
+		$.ajax({
+			type:'POST',
+			url:'/SalidaProductoCliente/',
+			data: datos,
+			success:function(resp){
+				console.log(resp);
+				//alert("Guardado...");
+				//$(".notifications-menu .dropdown-menu .menu").prepend(resp);
+				if (resp == 'ok'){
+					$("#ventanas").text("Se Realizó el Movimiento de Salida Correctamente.");
+					salidas();
+					VerProduct();
+					cantsalidas();
+					/*setInterval(function(){
+						$("#ventanas").dialog("close");
+					}, 3000);*/
+				}
+				else{
+					$("#ventanas").html(resp);
+				}
+			}
+		});
+		
+	});
+function salidas(){
+	$.ajax({
+		type:'GET',
+		url:'/get_retorna_salidas_view/',
+		success:function(resp){
+			$(".notifications-menu .dropdown-menu .menu").prepend(resp);
+		}
+	});
+}
+function cantsalidas(){
+	$.ajax({
+		type:'GET',
+		url:'/cantidadSalida/',
+		success:function(resp){
+			$(".notifications-menu .label-warning").html(resp);
+		}
+	});
+}
+$(document).ready(function(){
+	$(".card li").hide(1000);
+});
+
+</script>
+	<h5>Producto: <label>{{producto.Nombre_producto|upper}}</label> - Stock: <label>{{producto.Stock}}</label></h5>
+	<h5>Trabajador:<label>{{trab.Nombre_trabajador|upper}},{{trab.Apellidos|upper}}</label>. Ci/Nit:<label>{{trab.Ci_Nit}}</label></h5>
+<div class="card">
+<form method="POST" id="Tipoo" >	{% csrf_token %}
+	<input type="hidden" value="{{producto.id}}" id="prod" name="prod" required><br>
+	<input type="hidden" value="{{trab.id}}" id="trab" name="trab" required><br>
+	<!-- <label>Precio:</label>
+	<input type="number" value="{{producto.Precio_producto}}" name="prec" id="prec" step="any" placeholder="Precio actual:{{producto.Precio_producto}}" required><br> -->
+	<label>Cantidad:</label>
+	<input type="number" value="" id="cant" name="cant" min="1" placeholder="Cantidad Disponible: {{producto.Stock}}" required><br>
+	
+	<button class="btn btn-success">Registrar Salida</button>
+</form>
+</div>
+

@@ -1,0 +1,25 @@
+
+<table class="table table-hover" width="1000px" border=1>
+	<tr><td colspan="7" align="center"><br><strong>PRODUCTOS INGRESADOS POR EL PROVEEDOR: {{proveedor.Nombre_Razon_Social|upper}} - NIT: {{proveedor.Nit}} - TELF: {{proveedor.Telefono}}</strong></td></tr>
+<tr class="success"><td><br>Producto</td>
+	<td align="center"><br>Cantidad</td>
+	<td align="center"><br>Precio</td>
+	<td align="center"><br>total</td>
+	<td align="center" colspan="3"><br>Fecha y hora de Registro</td>
+</tr>
+{% for i in ingresos %}
+	{% if i.estado == 0 %}
+<tr>
+	<td><br>{{i.producto}}</td>
+	<td align="center"><br>{{i.cantidad}}</td>
+	<td align="center"><br>{{i.Precio_unidad}}</td>
+	<td align="center"><br>{{i.total}}</td>
+	<td align="center" colspan="3"><br>{{i.fecha_registro}}</td>
+	
+</tr>
+	{% endif %}
+{% empty %}
+	<tr><td colspan="7" align="center">No se encontraron registros.</td></tr>
+{% endfor %}
+<tr> <td colspan="3"><br>Registros:{{t_ingresos}}</td><td colspan="4"><br>Total Gasto: {{total}}</td></tr>
+</table>

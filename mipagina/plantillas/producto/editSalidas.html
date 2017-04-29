@@ -1,0 +1,29 @@
+<script type="text/javascript">
+$('#Tipo').submit(function(e){
+		e.preventDefault();
+		var dato=$(this).serialize();
+		console.log(dato);
+		$.ajax({
+			type:"POST",
+			url:"/editSalidas/"+{{cod}}+"/",
+			data: dato,
+			success:function(resp){
+				console.log(resp);
+				$('#ventanas').html(resp);
+				$.ajax({
+					type:'GET',
+					url:'/escogido/'+{{dato.trabajador.id}}+'/',
+					success:function(data){
+						$("#FormAjax").html(data);
+					}
+				});
+			}
+		});
+	});
+</script>
+<div class="card">
+<form method="POST" id="Tipo">{% csrf_token %}
+	{{forms}}<br>
+	<button class="btn btn-success">Actualizar</button>
+</form>
+</div>

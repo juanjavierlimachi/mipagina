@@ -1,0 +1,26 @@
+<table class="table table-hover" border="1">
+<tr><td align="center" colspan="7"><br><strong><br>PRODUCTOS INGRESADOS POR EL PROVEEDOR: {{trabajador|upper}}</strong></td></tr>
+<tr class="success">
+<td align="center" colspan="2"><br>Producto</td>
+<td align="center"><br>Cantidad</td>
+<td align="center"><br>Precio</td>
+<td align="center"><br>Total</td>
+<td align="center" colspan="2"><br>Fecha Ingreso</td>
+</tr>
+{% for i in salidas %}
+	{% for venta in dato %}
+		{% if i.id == venta %}
+			<tr>
+				<td colspan="2"><br>{{i.producto|upper}}</td>
+				<td align="center"><br>{{i.cantidad}}</td>
+				<td align="center"><br>{{i.Precio_unidad}}</td>
+				<td align="center"><br>{{i.total}}</td>
+				<td colspan="2"><br>{{i.fecha_registro}}</td>
+			</tr>
+		{% endif %}
+	{% endfor %}
+{% empty %}
+<tr><td><br>No hay registros para este Proveedor</td></tr>
+{% endfor %}
+<tr><td colspan="4"><br>Total Salidas:{{cont}}</td><td align='center'>Total: {{pago}} Bs.</td></tr>
+</table>

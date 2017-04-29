@@ -1,0 +1,69 @@
+<script type="text/javascript">
+$(function(){
+    var listado = new Array();
+    $('.table tr td #valor').on('click', function(){
+        if( $(this).is(':checked') ){
+            var idProduco=$(this).val();
+            listado.push(idProduco);
+            console.log(listado);
+
+       // alert("Desactivaste La salida :"+idProduco);
+       } else{
+            var idProduco=$(this).val();
+            //alert("Desactivaste La salida :"+idProduco);
+            var a = listado.indexOf(idProduco);
+            listado.splice(a, 1);
+            console.log(listado);
+
+       }
+    });
+
+
+$("table #imprimir").on("click",function(e){
+    if (listado.length > 0){
+      e.preventDefault();
+      window.open("/ImprmirPro/"+listado+"/");
+      $("#ventanas").dialog("close");
+    }
+    else{
+      $("#ventanas").dialog("close");
+      alert("No ha seleccionado ningun elemento.");
+    }
+  });
+});
+</script>
+<table class="table table-hover table-striped">
+<tr align='center'><td colspan="7"><strong>PRODUCTOS COMPRADOS AL PROVEEDOR: {{persona|upper}} del Presente Mes</strong></td></tr>
+<tr class="success">
+<td>Producto</td>
+<td>Cantidad</td>
+<td>Precio</td>
+<td>Total</td>
+<td>Fecha Ingreso</td>
+<td>Imprmir</td>
+<td>Opciones</td>
+</tr>
+{% for venta in ventas %}
+<tr>
+<td>{{venta.producto}}</td>
+<td>{{venta.cantidad}}</td>
+<td>{{venta.Precio_unidad}}</td>
+<td>{{venta.total}}</td>
+<td>{{venta.fecha_registro}}</td>
+<td><input name="valor" id="valor" type="checkbox" value="{{venta.id}}" /></td>
+<td>
+    {% if user.is_active and user.is_superuser %}
+    <a href="/editIngresos/{{venta.id}}/"><span class="glyphicon glyphicon-pencil"></span></a>
+    <a href="/deleteIngresos/{{venta.id}}/" style="color:red;"><span class="glyphicon glyphicon-trash"></span></a>
+    {% else %}
+      <span class="glyphicon glyphicon-info-sign"></span>
+    {% endif %}
+  </td>
+</tr>
+{% empty %}
+<tr><td>No hay registros para este trabajador</td></tr>
+{% endfor %}
+<tr><td>Resultados:{{cont}}</td><td></td><td></td><td>{{totaoPagado}}</td><td></td><td>
+    <a href="#" class="btn btn-default" id="imprimir">Imprimir</a></td><td></td></tr>
+</table>
+<script type="text/javascript" src="{{STATIC_URL}}js/modales.js"></script>

@@ -1,0 +1,53 @@
+{% if reservas|length == 0 %}
+<label>No exsiste Reservas de Productos</label>
+{% else %}
+<div class="table-responsive">
+<table class="table table-hover table-striped">
+	<tr><td colspan="8" align='center'><br>Lista de Reservas</td></tr>
+	<tr><td align='center'> Producto</td>
+		<td align='center'> Precio</td>
+		<td align='center'> Cantidad</td>
+		<td align='center'> Total</td>
+		<td align='center'> Trabajador</td>
+		<td align='center'>Fecha a Cancelar</td>
+		<td align='center'> Opciones</td>
+		<td align='center'>Estado</td>
+	</tr>
+	{% for i in productos %}
+		{% for j in reservas %}
+			{% if i.id == j.producto_id %}
+					<tr><td>         		{{j.producto}}</td>
+						<td align='center'> {{i.Precio_producto}}</td>
+						<td align='center'> {{j.cantidad}}</td>
+					
+						<td align='center'>{{j.Total}}</td>
+						<td align='center'>{{j.id_trabajador}}</td>
+						<td align='center'>{{j.fecha}}</td>
+						<td>
+				{% if user.is_active and user.is_superuser %}
+				<a href="/editReserva/{{j.id}}/"><span class="glyphicon glyphicon-pencil"></span></a>
+				<a href="/deleteReserva/{{j.id}}/" style="color:red;"><span class="glyphicon glyphicon-trash"></span></a>
+				{% else %}
+					<span class="glyphicon glyphicon-info-sign"></span>
+				{% endif %}
+			</td>
+			<td>
+				{% if j.estado == 1 %}
+					<span><img src="/static/img/icon_success.gif"></span>
+				{% else %}
+					<span><img src="/static/img/icon_error.gif"></span>
+				{% endif %}
+			</td>
+					</tr>
+				{% endif %}
+		{% endfor %}
+	{% endfor %}
+	<tr>
+	<td align='center'>Registros:{{tregistros}}</td>
+	<td align='center'>bajas: {{enbaja}}</td>
+	<td align='center'>Activos:{{enalta}}</td>
+</tr>
+</table>
+</div>
+<script type="text/javascript" src="{{STATIC_URL}}js/modales.js"></script>
+{% endif %}

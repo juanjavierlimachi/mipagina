@@ -1,0 +1,59 @@
+<script type="text/javascript">
+$('#Tipoo').submit(function(e){
+		e.preventDefault();
+		var datos=$(this).serialize();
+		console.log(datos);
+		$.ajax({
+			type:'POST',
+			url:'/ReservasNew/',
+			data: datos,
+			success:function(resp){
+				console.log(resp);
+				$("#ventanas").html(resp);
+				CantidadReservas();
+				reservas();
+			}
+		});
+		
+	});
+
+function reservas(){
+	$.ajax({
+		type:'GET',
+		url:'/get_retorna_reservas/',
+		success:function(resp){
+			$(".messages-menu .dropdown-menu .menu").prepend(resp);
+		}
+	});
+}
+function CantidadReservas(){
+	$.ajax({
+		type:'GET',
+		url:'/cantidadreservas/',
+		success:function(resp){
+			$(".messages-menu .label-success").html(resp);
+		}
+	});
+}
+$(document).ready(function(){
+	$(".card li").hide(1000);
+});
+
+</script>
+	<h5>Producto: <label>{{producto.Nombre_producto|upper}}</label> - Stock: <label>{{producto.Stock}}</label></h5>
+	<h5>Trabajador:<label>{{trab.Nombre_trabajador|upper}},{{trab.Apellidos|upper}}</label>. Ci/Nit:<label>{{trab.Ci_Nit}}</label></h5>
+<div class="card">
+<form method="POST" id="Tipoo" >	{% csrf_token %}
+	<input type="hidden" value="{{producto.id}}" id="prod" name="prod" required><br>
+	<input type="hidden" value="{{trab.id}}" id="trab" name="trab" required><br>
+	<label>Cantidad:</label>
+	<input type="number" value="" id="cant" name="cant" min="1" placeholder="Ingresa la Cantidad" required>
+	<!-- <label>Adelanto:</label>
+	<input type="number" value="" id="adelanto" name="adelanto" min="1" placeholder="Ingrese un adelanto" required> -->
+	<label>Fecha a Recoger:</label>
+	<input type="date" value="" id="fecha" name="fecha" placeholder="Ingrese la fecha a Canelar" required>
+	<br>
+	<button class="btn btn-success">Registrar Reserva</button>
+</form>
+</div>
+

@@ -1,0 +1,410 @@
+
+<!DOCTYPE html>
+<html lang="en" class="wide wow-animation">
+<head>
+ 
+<title>Portal Web</title>
+<link href="{{STATIC_URL}}css/bootstrap.min.css" rel="stylesheet">
+ <script src="{{STATIC_URL}}js/bootstrap.min.js"></script>
+
+ <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/stylo.css">
+	<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/fons.css">
+
+<meta name="format-detection" content="telephone=no">
+<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta charset="utf-8">
+<script type="text/javascript">
+//<![CDATA[
+try{if (!window.CloudFlare) {var CloudFlare=[{verbose:0,p:0,byc:0,owlid:"cf",bag2:1,mirage2:0,oracle:0,paths:{cloudflare:"/cdn-cgi/nexp/dok3v=1613a3a185/"},atok:"b0c91d08c59f6fb1ca56dd748606fc87",petok:"6d56fe187d34fac294e3bef0be1b9cf2fc95cb7f-1491000692-1800",zone:"template-help.com",rocket:"0",apps:{"abetterbrowser":{"ie":"7"}}}];!function(a,b){a=document.createElement("script"),b=document.getElementsByTagName("script")[0],a.async=!0,a.src="//ajax.cloudflare.com/cdn-cgi/nexp/dok3v=f2befc48d1/cloudflare.min.js",b.parentNode.insertBefore(a,b)}()}}catch(e){};
+//]]>
+</script>
+<link rel="icon" href="images/favicon.ico" type="image/x-icon">
+ 
+<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Montserrat:300,400,700%7CRoboto:300,300italic,400,700">
+<link rel="stylesheet" href="{{STATIC_URL}}css/style.css">
+</head>
+<body>
+<div class="page text-center">
+<div class="inner-wrapper">
+<main class="page-scroller">
+<div class="scrollerSection fp-auto-height rd-navbar-wrap">
+ 
+<nav data-layout="rd-navbar-fixed" data-sm-layout="rd-navbar-fixed" data-sm-device-layout="rd-navbar-fixed" data-md-layout="rd-navbar-fixed" data-md-device-layout="rd-navbar-fixed" data-lg-layout="rd-navbar-static" data-lg-device-layout="rd-navbar-static" data-sm-stick-up-offset="170px" data-lg-stick-up-offset="170px" class="rd-navbar">
+<div class="rd-navbar-inner">
+ 
+<div class="rd-navbar-panel">
+ 
+<button data-rd-navbar-toggle=".rd-navbar-nav-wrap" class="rd-navbar-toggle"><span></span></button>
+ 
+<div class="rd-navbar-brand"><a href="#"><span class="brand-name">Muebleria</span><!-- <span class="brand-slogan"><span>FURNITURE</span><span>MANUFACTURING</span></span> --></a></div>
+</div>
+<div class="rd-navbar-nav-wrap">
+ 
+<ul class="rd-navbar-nav">
+<li class="veil"><a href="#home">INICIO</a></li>
+<li class="active"><a href="#home">INICIO</a></li>
+<li><a href="#about">PRODUCTOS</a>
+ 
+<ul class="rd-navbar-dropdown">
+<li><a href="#">MAS VEDIDOS</a></li>
+<li><a href="#">MAS VISTOS</a></li>
+<li><a href="#">EN OFERTAS</a></li>
+</ul>
+</li>
+<!-- <li><a href="#who">Who We Are</a>
+ 
+<ul class="rd-navbar-megamenu">
+<li class="rd-navbar-megamenu-list">
+<h5>Categories</h5>
+<ul>
+<li><a href="#">Banquettes & Ottomans</a></li>
+<li><a href="#">Bar & Counter Stools</a></li>
+<li><a href="#">Chaise Lounges</a></li>
+<li><a href="#">Desk Chairs</a></li>
+<li><a href="#">Dining Chairs</a></li>
+<li><a href="#">Occasional & Lounge Chairs</a></li>
+<li><a href="#">Sofas & Loveseats</a></li>
+</ul>
+</li>
+<li class="rd-navbar-megamenu-list">
+<h5>Company Info</h5>
+<ul>
+<li><a href="#">Our team</a></li>
+<li><a href="#">Our partners</a></li>
+<li><a href="#">Quality certificates</a></li>
+<li><a href="#">Careers</a></li>
+</ul>
+</li>
+<li>
+<div class="rd-navbar-baner">
+<h5>About</h5>
+<p>Today the Better is one of the most important companies on the international furniture market. Brilliantly successful beginnings have led the Better to make continuous research for quality to meet customers’ needs.</p>
+</div>
+</li>
+</ul>
+</li> -->
+<li><a href="#products" id="productsServer">NUESTROS PRODUCTOS</a></li>
+<li><a href="#gallery">GALERIA</a></li>
+<li><a href="#blog">NOSOTROS</a></li>
+{% if trabajador %}
+	<li><a href="#contacts">CONTACTOS</a></li>
+{% endif %}
+{% if trabajador %}
+<li><a href="/logout-cliente/" id="logout">SALIR</a></li>
+{% else %}
+<li><a data-toggle="modal" href="#example" id="ingresar">INGRESAR</a></li>
+{% endif %}
+</ul>
+</div>
+<div class="rd-navbar-contact">
+<p>tel: <a href="callto:#">800-2345-6789</a></p>
+</div>
+</div>
+</nav>
+</div>
+<div id="home" style="background: url(&quot;/static/img/1p.jpeg&quot;); background-size: cover;" class="scrollerSection context-dark section section-center bg-image bg-image-01">
+<div class="shell intro-text">
+<h1 class="text-animation">
+	<span class="word1">
+		<span class="char1"><span class="char1">M</span></span>
+		<span class="char2"><span class="char1">U</span></span>
+		<span class="char3"><span class="char1">E</span></span>
+		<span class="char4"><span class="char1">B</span></span>
+		<span class="char5"><span class="char1">L</span></span>
+		<span class="char6"><span class="char1">E</span></span>
+		<span class="char7"><span class="char1">R</span></span>
+		<span class="char8"><span class="char1">I</span></span>
+		<span class="char9"><span class="char1">A</span></span>
+	</span>
+</h1>
+<p class="small text-animation">
+	<span class="word1"><span class="char1">
+						<span class="char1">DIR</span></span>
+	<span class="char2"><span class="char1">:</span></span>
+	<span class="char3"><span class="char1">Av.</span></span>
+	<span class="char4"><span class="char1">A</span></span>
+	<span class="char5"><span class="char1">R</span></span>
+	<span class="char6"><span class="char1">C</span></span>
+	<span class="char7"><span class="char1">E</span></span>
+	<!-- <span class="char8"><span class="char1">R</span></span>
+	<span class="char9"><span class="char1">E</span></span> -->
+	</span>
+	<span class="word2"><span class="char1">
+		<span class="char2"><span class="char1">E</span></span>
+		<span class="char3"><span class="char1">N</span></span>
+		<span class="char4"><span class="char1">T</span></span>
+		<span class="char5"><span class="char1">R</span></span>
+		<span class="char6"><span class="char1">E</span></span>
+	</span>
+	<span class="word2"><span class="char1">
+		<span class="char7"><span class="char1">L</span></span>
+		<span class="char8"><span class="char1">I</span></span>
+		<span class="char9"><span class="char1">T</span></span>
+		<span class="char10"><span class="char1">O</span></span>
+		<span class="char11"><span class="char1">R</span></span>
+		<span class="char12"><span class="char1">A</span></span>
+		<span class="char13"><span class="char1">L</span></span>
+	</span>
+</p>
+</div>
+</div>
+<div id="about" style="background: url(&quot;/static/img/mesa.jpg&quot;); background-size: cover;" class="section-fade scrollerSection context-dark section section-center bg-image bg-image-02">
+<div class="shell">
+<h2 data-wow-delay=".25s" class="wow fadeInUp">Acerca de la Empresa</h2>
+<p data-wow-delay=".4s" class="wow fadeInUp lead">
+Hoy, "Muebleria el Pino" es una de las empresas más importantes del mercado internacional del mueble.
+Los inicios brillantes han llevado a realizar investigaciones continuas de calidad y
+estilo. Los nuevos productos reflejan cambios en estilos de vida y tendencias contemporáneas.
+</p>
+</div>
+</div>
+<div id="who" style="background: url(&quot;/static/img/masss.jpg&quot;); background-size: cover;" class="section-fade scrollerSection context-dark section section-middle bg-image bg-image-03">
+<div class="shell text-md-left">
+<div class="range range-xs-center range-md-right range-xs-middle">
+<div class="cell-lg-6 cell-sm-8">
+<div class="bg-cell">
+<h2 data-wow-delay=".4s" class="wow fadeInUp">Historia de La Empresa</h2>
+<p data-wow-delay=".6s" class="wow fadeInUp">MUEBLERIA EL PINO es una empresa especializada en muebles estilo moderno, contemporáneo y minimalista, que nace en el verano de {% now "Y" %}, como continuación de 6 años de trabajo en la línea de muebles modernos, y como respuesta a la necesidad de un estilo diferente y de buen gusto.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="products" style="background: url(&quot;/static/img/salon.jpg&quot;); background-size: cover;" class="section-fade scrollerSection context-dark section section-top bg-image bg-image-04">
+<div class="shell text-lg-left section-lg-top-200" id="contens">
+<h2 data-wow-delay=".4s" class="wow fadeInUp">Nuestra Filosofia</h2>
+<p data-wow-delay=".6s" class="wow fadeInUp">
+La innovación siempre ha sido parte de la cultura de producción en la empresa. El objetivo del grupo es la satisfacción del cliente final.<br class="veil reveal-lg-block">
+Muebleria el Pino, concentra el estilo y la investigación tecnológica en diseños específicos dirigidos a garantizar la máxima calidad.</p>
+</div>
+</div>
+<div id="gallery" class="scrollerSection section section-top-0 section-lg-top-80 section-bottom-0 gallery">
+ 
+<div data-items="1" data-nav="true" data-dots="true" data-margin="30" data-mouse-drag="false" class="owl-carousel">
+<div class="range range-xs">
+<div class="cell-md-6">
+<div class="range range-xs">
+<div class="cell-md-12 cell-sm-6 gallery-item-sm">
+<div style="background: url(&quot;/static/img/masss.jpg&quot;); background-size: cover;" class="item-img"></div>
+</div>
+<div class="cell-md-12 cell-sm-6 gallery-item-sm">
+<div style="background: url(&quot;/static/img/sofa.jpg&quot;); background-size: cover;" class="item-img"></div>
+</div>
+</div>
+</div>
+<div class="cell-md-6 offset-top-10 offset-md-top-0">
+<div style="background: url(&quot;/static/img/1ppp.jpg&quot;); background-size: cover;" class="gallery-item-lg"></div>
+</div>
+</div>
+<div class="range range-xs">
+<div class="cell-md-6 cell-md-push-1">
+<div class="range range-xs">
+<div class="cell-md-12 cell-sm-6 gallery-item-sm">
+<div style="background: url(&quot;/static/img/modular.jpg&quot;); background-size: cover;" class="item-img"></div>
+</div>
+<div class="cell-md-12 cell-sm-6 gallery-item-sm">
+<div style="background: url(&quot;/static/img/mesass.jpg&quot;); background-size: cover;" class="item-img"></div>
+</div>
+</div>
+</div>
+<div class="cell-md-6 offset-top-10 offset-md-top-0">
+<div style="background: url(&quot;/static/img/ropH.jpg&quot;); background-size: cover;" class="gallery-item-lg"></div>
+</div>
+</div>
+<div class="range range-xs">
+<div class="cell-md-6">
+<div class="range range-xs">
+<div class="cell-md-12 cell-sm-6 gallery-item-sm">
+<div style="background: url(&quot;/static/img/salon.jpg&quot;); background-size: cover;" class="item-img"></div>
+</div>
+<div class="cell-md-12 cell-sm-6 gallery-item-sm">
+<div style="background: url(&quot;/static/img/modular.jpg&quot;); background-size: cover;" class="item-img"></div>
+</div>
+</div>
+</div>
+<div class="cell-md-6 offset-top-10 offset-md-top-0">
+<div style="background: url(&quot;/static/img/mol.jpg&quot;); background-size: cover;" class="gallery-item-lg"></div>
+</div>
+</div>
+</div>
+</div>
+<div id="blog" style="background: url(&quot;/static/img/modular.jpg&quot;); background-size: cover;" class="section-fade scrollerSection section-0 section section-center context-dark bg-image bg-image-05">
+<div class="shell section-80 section-lg-top-120">
+
+<h2>QUIENES SOMOS</h2>
+ 
+<div data-dots="true" data-items="1" data-md-items="2" data-margin="30" data-mouse-drag="false" class="offset-top-35 text-md-left owl-carousel owl-nav-hidden">
+<div class="post-blog">
+<h6>Fundador:
+LIC. ROBERTO RAMIREZ</h6>
+<h6><a href="#">VISIÓN</a></h6>
+<p>
+Ser líder en el mercado regional de muebles ofreciendo calidad e innovación, reconocidos por nuestra experiencia, vocación, diseños y estabilidad a través de un equipo altamente capacitado, haciendo uso de la más moderna tecnología a nuestro alcance.</p>
+</div>
+<div class="post-blog">
+<h6>MUEBLERIA EL PINO</h6>
+<h6><a href="#">MISIÓN</a></h6>
+<p>
+Satisfacer al cliente, brindando las mejores soluciones de mobiliario y diseño de interiores con muebles de excelente calidad, comodidad y elegancia; apoyándonos en las capacidades de nuestro personal competente y comprometido, garantizando durabilidad, innovación y entregas a tiempo con responsabilidad y amabilidad.</p>
+</div>
+</div><!-- <a href="#" class="offset-lg-top-60 offset-top-20 btn btn-default">INICIO</a> -->
+</div>
+</div>
+{% if trabajador %}
+	<div id="contacts" style="background: url(&quot;/static/img/ssss.jpg&quot;); background-size: cover;" class="scrollerSection context-dark section section-full bg-image bg-image-06">
+<div class="shell text-md-left">
+<div class="range">
+<div data-wow-delay=".6s" class="cell-xs-middle cell-lg-4 cell-md-5 section-lg-top-120 section-bottom-60 wow fadeIn">
+<h2>CONTACTOS</h2>
+<!-- <div class="offset-top-28">
+<p>Envianos un Comentario Sobre Nosotros</p>
+</div>
+<h6 class="offset-top-10 text-uppercase text-regular">tel: <a href="callto:#">800-2345-6789</a></h6> -->
+ 
+<form data-form-output="form-output-global" data-form-type="contact" method="post" action="bat/rd-mailform.php" class="offset-top-40 rd-mailform" id="Tipo">
+{% csrf_token %}
+<div class="form-group">
+<label for="contact-message" class="form-label">Escribe tu Opinión:</label>
+<textarea id="contact-message" name="message" data-constraints="@Required" class="form-control" required></textarea>
+</div>
+<button type="submit" class="btn btn-default offset-lg-top-40 offset-top-20">Enviar</button>
+</form>
+</div>
+<div data-wow-delay=".6s" class="cell-xs-middle cell-lg-4 cell-md-5 section-lg-top-120 section-bottom-60 wow fadeIn">
+<!-- <h2>CONTACTOS</h2> -->
+<div class="offset-top-28">
+<p>Nombre: {{trabajador|upper}} pensamos que te gustaria comentarnos de tu experiancia en esta nueva plataforma que te mostramos para ti, es importante tu opinión ya que nosotros estamos para ofreserte el mejor servicios que te mereces.</p>
+</div>
+<h6 class="offset-top-10 text-uppercase text-regular">tel: <a href="callto:#">800-2345-6789</a></h6>
+<!--Aki va los comectarios registrados-->
+</div>
+</div>
+</div>
+</div>
+{% else %}
+
+{% endif %}
+<div class="section-fade scrollerSection page-footer fp-auto-height">
+<div class="page-footer-inner">
+<div class="range">
+<div class="cell-sm-8 text-sm-left">
+<p><a href="#" class="logo">Muebleria</a>&#169; <span id="copyright-year"></span>. <a href="#">Desarrollador del sitio Web: Ing. Juan Javier L. Cel: 79436914</a>
+</p>
+</div>
+<!-- <div class="cell-sm-4 text-sm-right offset-top-10 offset-sm-top-0">
+<a href="#" class="icon fa-facebook"></a>
+<a href="#" class="icon fa-twitter"></a>
+<a href="#" class="icon fa-google-plus"></a>
+</div> -->
+</div>
+</div>
+</div>
+</main>
+</div>
+ 
+</div>
+<!-- <div id="form-output-global" class="snackbars"></div> boton de envio-->
+ 
+<div tabindex="-1" role="dialog" aria-hidden="true" class="pswp">
+<div class="pswp__bg"></div>
+<div class="pswp__scroll-wrap">
+<div class="pswp__container">
+<div class="pswp__item"></div>
+<div class="pswp__item"></div>
+<div class="pswp__item"></div>
+</div>
+<div class="pswp__ui pswp__ui--hidden">
+<div class="pswp__top-bar">
+<div class="pswp__counter"></div>
+<button title="Close (Esc)" class="pswp__button pswp__button--close"></button>
+<button title="Share" class="pswp__button pswp__button--share"></button>
+<button title="Toggle fullscreen" class="pswp__button pswp__button--fs"></button>
+<button title="Zoom in/out" class="pswp__button pswp__button--zoom"></button>
+<div class="pswp__preloader">
+<div class="pswp__preloader__icn">
+<div class="pswp__preloader__cut">
+<div class="pswp__preloader__donut"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+<div class="pswp__share-tooltip"></div>
+</div>
+<button title="Previous (arrow left)" class="pswp__button pswp__button--arrow--left"></button>
+<button title="Next (arrow right)" class="pswp__button pswp__button--arrow--right"></button>
+<div class="pswp__caption">
+<div class="pswp__caption__cent"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="social">
+	<a href="javascript: void(0);" onclick="window.open('http://www.facebook.com/sharer.php?u=http://127.0.0.1:8000/portada/','ventanacompartir', 'toolbar=0, status=0, width=650, height=450');" class="icon icon-facebook"></a>
+	<a href="javascript: void(0);" onclick="window.open('http://twitter.com/home?status=http://127.0.0.1:8000/portada/','ventanacompartir', 'toolbar=0, status=0, width=650, height=450' );" class="icon icon-twitter"></a>
+	<a href="javascript: void(0);" onclick="window.open('https://plus.google.com/share?url=http://127.0.0.1:8000/portada/','ventanacompartir', 'toolbar=0, status=0, width=650, height=450');" class="icon icon-google-plus"></a>
+	{% if trabajador %}
+	<a href="#" class="icon icon-user" title="Bien venido:{{trabajador|upper}}"></a>
+	<a href="#" class="icon icon-cart" title="Confirmar Compra"></a>
+	{% endif %}
+</div>
+<div id="example" class="modal fade">
+			   <div class="modal-dialog">   
+			      <div class="modal-content"> 
+			         <div class="modal-header">
+			            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+			            ×
+			            </button>
+			            <h5>Compra tu producto ya...!!!</h5>
+			         </div>
+			         <div class="modal-body">
+			                         
+			         </div>
+			   	</div>
+			   </div>
+			</div>
+<script src="{{STATIC_URL}}js/core.min.js"></script>
+<script src="{{STATIC_URL}}js/scriptss.js"></script>
+<script type="text/javascript">
+ var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-7078796-5']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'https://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();</script>
+</body> <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-P9FT69"height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-P9FT69');</script><!-- End Google Tag Manager -->
+<script type="text/javascript">
+$(document).ready(function(){
+	$("#productsServer").on("click", function(){
+		$.ajax({
+			type:'GET',
+			url:'/prodcutos_Reserva/',
+			success:function(resp){
+				$("#products #contens").html(resp);
+			}
+		});
+	});
+	$("#ingresar").on("click", function(){
+		$(".modal-header h5").html("<h5>Bienvenido al Sistema</h5>");
+		$.ajax({
+			type:'GET',
+			url:'/loguin-cliente/',
+			success:function(resp){
+				$(".modal-body").html(resp);
+			}
+		});
+	});
+	$('#Tipo').submit(function(e){
+        e.preventDefault();
+        var dato=$(this).serialize();
+        console.log(dato);
+        $("#contact-message").val("");
+        alert("Bien tu Opinión nos importa, tomaremos en cuenta tu Comentario gracias por estar altanto de nuestros productos");
+    });
+});
+</script>
+</html>

@@ -1,0 +1,46 @@
+<script type="text/javascript">
+//  C:\xampp\mysql\bin
+	$("div #Tipo").submit(function(e){
+		e.preventDefault();
+		var dato=new FormData(this);
+		console.log(dato);
+		$.ajax({
+			type:'POST',
+			url:'/ImportDB/',
+			data: dato,
+			contentType: false,
+	        processData: false,
+			beforeSend: entesEnviar,
+			success:function(resp){
+				console.log(resp);
+				$('#resp').html(resp);
+				
+			}
+		});
+			function entesEnviar(){
+		                $('#resp').html('<img src="{{STATIC_URL}}img/log.gif"></img><br>Procesando...');
+		    }
+	});
+function Respaldo(){
+	$.ajax({
+			type:'GET',
+			url:'/crearBackup/',
+			beforeSend: entesEnviar,
+			success:function(resp){
+                    console.log(resp);
+                    $('#resp').html(resp);
+                }
+		});
+		function entesEnviar(){
+                $('#resp').html('<img src="{{STATIC_URL}}img/log.gif"></img><br>Procesando...');
+        }
+}
+</script>
+<div class="card">
+<form id="Tipo" method="POST" enctype="multipart/form-data">{% csrf_token %}
+	{{forms}}
+	<button class="btn btn-primary" id='btn'>Importar DB</button>
+	<a href="#" onclick='Respaldo()' class="btn btn-warning">Crear Backup</a>
+	<p id="resp"></p>
+</form>
+</div>

@@ -1,0 +1,44 @@
+<script type="text/javascript">
+$('#Tipo').submit(function(e){
+		e.preventDefault();
+		var dato=$(this).serialize();
+		console.log(dato);
+		var ci = $("#id_Ci_Nit").val();
+		var tel = $("#id_Telefono").val();
+		if (ci.length >= 6){
+			if (tel.length >= 8){
+				$.ajax({
+					type:'POST',
+					url:'/NewClient/',
+					data: dato,
+					success:function(resp){			
+						if(resp=='ok'){
+							$.ajax({
+						      type:'GET',
+						      url:'/VerClientes/',
+						      beforeSend:Espera,
+						      success:function(resp){
+						        $("#FormAjax").html(resp);
+						      }
+						    });
+						    function Espera(){
+						       $("#FormAjax").text("Procesando");
+						    }
+						}else{alert("Datos Incorrectos !!")}
+					}
+				});
+			}else{
+				alert("Error el Num. de Teléfono deve ser 8 Dígitos.")
+			}
+		}else{
+			alert("Error el Num. de CI deve ser minimo 6 ó Nit Dígitos.")
+		}
+	});
+</script>
+<div class="card">
+	<p id="texto">Registro Trabajador</p>
+<form method="POST" id="Tipo">{% csrf_token %}
+	{{forms}}<br>
+	<button class="btn btn-success">Registrar</button>
+</form>
+</div>

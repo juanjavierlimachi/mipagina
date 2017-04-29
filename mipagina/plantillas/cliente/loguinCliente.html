@@ -1,0 +1,44 @@
+<script type="text/javascript">
+$(function(){
+	$("#login-username").focus();
+$('#Tipo').submit(function(e){
+        e.preventDefault();
+        var dato=$(this).serialize();
+        console.log(dato);
+        $.ajax({
+            type:'POST',
+            url:'/loguin-cliente/',
+            data: dato,
+            success:function(resp){
+                if (resp == "bien"){
+                	window.location="/portada/";
+                }else{
+                	$("#error").html(resp);
+                }
+            }
+        });
+    });
+});
+</script>
+<form method="POST" id="Tipo" action="/loguin-cliente/" class="form-horizontal" role="form">{% csrf_token %}
+	<div class="input-group">
+	 <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+	<input id="login-username" type="tel" class="form-control" name="tel" placeholder="Ingresa tu Nombre" required >
+</div>
+	<div class="input-group">
+	 <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+	<input type="password" name="ci" required placeholder="Ingrese su Contraseña" class="form-control" >
+</div>
+<div class="col-sm-12 controls">
+	<button id="btn-login" class="btn btn-success">Ingresar</button>
+</div>
+<div class="input-group">
+    <label id="error"></label>
+</div>
+</form>
+<style type="text/css">
+/*#Tipo label{width: 220px; float: left;display: inline-block;margin-top: 6px; margin-right: -15px;}*/
+#Tipo input{color: #000; background-color: #EAFAF1;}
+#Tipo button{margin-left: 40px; padding: 5px 10px; border-radius: 5px;}
+#error{text-align: center;color: red;}
+</style>

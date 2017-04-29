@@ -1,0 +1,25 @@
+<table class="table table-hover table-striped">
+	<tr><td colspan="7" align="center">LISTA DE SALIDAS DE PRODUCTO</td></tr>
+<tr class="success">
+	<td>Cantidad</td>
+	<td>Precio</td>
+	<td>total</td>
+	<td>Fecha y hora de salida</td>
+	<td>Estado</td>
+</tr>
+{% for i in salidas %}
+<tr>
+	<td>{{i.cantidad}}</td>
+	<td>{{i.Precio_unidad}}</td>
+	<td>{{i.total}}</td>
+	<td>{{i.fecha_registro}}</td>
+	<td>{% if i.estado == 0 %}
+	<span><img src="/static/img/icon_success.gif"></span>
+		{% else %}
+	<span><img src="/static/img/icon_error.gif"></span>
+		{% endif %}
+	</td>
+</tr>
+{% endfor %}
+<tr><td>{{c}}</td><td></td><td>{{t}}</td><td>Registros:{{cant}}</td></tr>
+</table>

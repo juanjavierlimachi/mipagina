@@ -1,0 +1,31 @@
+ <table class="table table-hover" border='1'>
+  <tr><td colspan="6" align="center"><br>REPORTE DE PRODUCTOS DEL MES {% now "m" %}</td></tr>
+  <tr class="success">
+    <td><br>Cod</td>
+    <td><br>Nombre Articulo</td>
+    <td><br>Marca</td>
+    <td><br>Categoria</td>
+    <td><br>Stock</td>
+    <td><br>Procio Unitario</td>
+  </tr>
+  {% for i in productos %}
+  		<tr>
+        <td><br>{{i.id}}</td>
+  			<td><br>{{i.Nombre_producto|upper}}</td>
+  			<td><br>{{i.Marca|upper}}</td>
+        <td><br>{{i.Categoria|upper}}</td>
+  			<td><br>{% if i.Stock < 10 %}
+                      {{i.Stock}}
+                  {% endif %}
+                  {% if i.Stock >= 10 and i.Stock < 25 %}
+                      {{i.Stock}}  
+                  {% endif %}
+                  {% if i.Stock >= 25 %}
+                     {{i.Stock}}  
+                  {% endif %}
+          </td> 
+          <td><br>{{i.Precio_producto}}</td>
+  		</tr>
+  {% endfor %}
+  <tr><td colspan="6"><br>Total Productos:{{total}}</td></tr>
+  </table>

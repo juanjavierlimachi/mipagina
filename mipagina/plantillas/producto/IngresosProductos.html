@@ -1,0 +1,64 @@
+<script type="text/javascript">
+$('#Tipoo').submit(function(e){
+		e.preventDefault();
+		var datos=$(this).serialize();
+		console.log(datos);
+		$.ajax({
+			type:'POST',
+			url:'/IngresoProductoCliente/',
+			data: datos,
+			success:function(resp){
+				console.log(resp);
+	
+				if (resp == 'ok'){
+					$("#ventanas").text("Se Realizó el Movimiento de Ingreso Correctamente.");
+					ingresos();
+				
+					VerProduct();
+					cantIngresos();
+					/*setInterval(function(){
+						$("#ventanas").dialog("close");
+					}, 3000);*/
+
+				}
+				else{
+					$("#ventanas").html(resp);
+				}
+
+			}
+		});
+	});
+function ingresos(){
+	$.ajax({
+		type:'GET',
+		url:'/get_retorna_ingresos_view/',
+		success:function(resp){
+			$(".tasks-menu .dropdown-menu .menu").prepend(resp);
+		}
+	});
+}
+function cantIngresos(){
+	$.ajax({
+		type:'GET',
+		url:'/cantidadIngresos/',
+		success:function(resp){
+			$(".tasks-menu .label-danger").html(resp);
+		}
+	});
+}
+$(document).ready(function(){
+	$(".card li").hide(1000);
+});
+</script>
+	<h5>Producto: <label>{{producto.Nombre_producto|upper}}</label> - Stock actual: <label>{{producto.Stock}}</label></h5>
+	<h5>Nombre o razón social: <label>{{trab.Nombre_Razon_Social|upper}}</label>,Nit:<label>{{trab.Nit}}</label>. Telf: <label>{{trab.Telefono}}</label></h5>
+<div class="card">
+<form method="POST" id="Tipoo" >	{% csrf_token %}
+	<input type="hidden" value="{{producto.id}}" id="prod" name="prod" required><br>
+	<input type="hidden" value="{{trab.id}}" id="trab" name="trab" required><br>
+	<!-- <label>Precio:</label><input type="number" placeholder="{{producto.Precio_producto}}"value="{{producto.Precio_producto}}" id="prec" name="prec"><br> -->
+	<label>Cantidad:</label><input type="number" value="" id="cant" name="cant" min="1" placeholder="Stock actual es:{{producto.Stock}}" required><br>
+	<button class="btn btn-success">Registrar Ingreso</button>
+</form>
+</div>
+

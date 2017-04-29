@@ -1,0 +1,1 @@
+web: gunicorn mipagina.wsgi --log-file -

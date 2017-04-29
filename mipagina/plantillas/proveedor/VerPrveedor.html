@@ -1,0 +1,73 @@
+<style type="text/css">
+#Busqueda{width: 30%;}
+#Busqueda input{width: 80%; float: left;}
+</style>
+<script type="text/javascript">
+$(function(){
+	var tbuscar=$("#Pro").attr('autocomplete','off');
+      tbuscar.keypress(buscarProveedor);
+      function buscarProveedor(){
+          $.ajax({
+              type:'GET',
+              url:'/buscarProveedor_view/',
+              data:$("#Busqueda").serialize(),
+              success:resultado,
+              error:errores
+          });
+        console.log($("#Busqueda").serialize());
+      }
+        function resultado(data){
+            $("#DatosAjax").fadeIn("slow");
+            console.log(data);
+            $("#DatosAjax").html(data);
+        }
+        function errores(){
+            alert("Error");
+        }
+});
+</script>
+<div class="btn-group">
+<form method="POST" id="Busqueda">{% csrf_token %}
+    <input type="text" name="p" id="Pro" placeholder="Nombre ó Razon Social, Cod, Telf." class="form-control" title="Busque un Proveedor" required/>
+    <span class="input-group-btn">
+    <button class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button></span>
+</form>
+</div>
+<div class="table-responsive">
+<table class="table table-hover table-striped">
+	<tr><td colspan="7" align="center">LISTA DE PROVEEDORES</td></tr>
+<tr class="success">
+	<td>Nombre ó Razon Social</td>
+	<td>Nit</td>
+	<td>Telefono</td>
+	<td>Dirección</td>
+	<td>Fecha Registro</td>
+	<td>Opciones</td>
+	<td>estado</td>
+</tr>
+{% for i in datos %}
+	<tr>
+		<td>{{i.Nombre_Razon_Social}}</td>
+		<td>{{i.Nit}}</td>
+		<td>{{i.Telefono}}</td>
+		<td>{{i.Direccion}}</td>
+		<td>{{i.fecha_registro}}</td>
+		<td>
+			{% if user.is_active and user.is_superuser %}
+			<a href="/editProveedor/{{i.id}}/"><span class="glyphicon glyphicon-pencil"></span></a>
+			<a href="/deleteProveedor/{{i.id}}/" style="color:red;"><span class="glyphicon glyphicon-trash"></span></a>
+			{% else %}
+				<span class="glyphicon glyphicon-info-sign"></span>
+			{% endif %}
+			</td>
+		<td>{% if i.estado == 0 %}
+				<span><img src="/static/img/icon_success.gif"></span>
+			{% else %}
+				<span><img src="/static/img/icon_error.gif"></span>
+			{% endif %}
+		</td>
+	</tr>
+{% endfor %}
+</table>
+</div>
+<script type="text/javascript" src="{{STATIC_URL}}js/modales.js"></script>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+      <title></title>
+      <script src="{{STATIC_URL}}js/html5-qrcode.min.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+    $('#reader').html5_qrcode(function(data){
+        //$('#read').prepend(data+'<br>');
+
+        $.ajax({
+          type:'GET',
+          url:'/oprtenerDatos/',
+          data:{'dato':data},
+          success:function(resp){
+            $("#read").prepend(resp+'<br>');
+
+          }
+        });
+        /*var texto_insertar = '<p>Valores :<br><input type="text" name="valor" value="'+data+'"/></p>';
+        $("#DatoQR").prepend(texto_insertar+'<br>');*/
+      },
+      function(error){
+        $('#read_error').html(error);
+      }
+      , function(videoError){
+        $('#vid_error').html(videoError);
+      }
+      );
+  });
+
+$(document).ready(function(){
+   // $("#mascampos").generaNuevosCampos("Compra", "compra", 2);
+  });
+
+  jQuery.fn.generaNuevosCampos = function(etiqueta, nombreCampo, indice){
+    $(this).each(function(){
+      elem = $(this);
+      elem.data("etiqueta",etiqueta);
+      elem.data("nombreCampo",nombreCampo);
+      elem.data("indice",indice);
+      
+      elem.click(function(e){9
+        e.preventDefault();
+        elem = $(this);
+        etiqueta = elem.data("etiqueta");
+        nombreCampo = elem.data("nombreCampo");
+        indice = elem.data("indice");
+        texto_insertar = '<p>' + etiqueta + ' ' + indice + ':<br><input type="text" name="' + nombreCampo + indice + '" /></p>';
+        indice ++;
+        elem.data("indice",indice);
+        nuevo_campo = $(texto_insertar);
+        elem.before(nuevo_campo);
+      });
+    });
+    return this;
+  }
+  </script>
+</head>
+<body>    
+        <!-- MAIN CONTENT -->
+    <section id="main_content" class="inner center">
+      <div id="main_content_wrap" class="outer">
+      <h3 class="center">Muestre el Código QR del Producto en la camara</h3>
+
+      <div  class="center" id="reader" style="width:300px;height:250px;"></div>
+
+      <h6 class="center">Resultado</h6>
+      <span id="read" class="center"></span>
+
+      <br>
+      <h6 class="center"></h6>
+      <span id="vid_error" class="center"></span>
+      </div>
+    </section>
+    </body>
+</html>
+
+
