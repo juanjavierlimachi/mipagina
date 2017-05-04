@@ -203,7 +203,7 @@ function borrado(){
 }
 </script>
 <div id="controles">
-<select id="cate">
+<!-- <select id="cate">
                 <option>Ver por Categorias</option>
                 {% for i in categorias %}
                     <option value='{{i.id}}'>{{i.Nombre_categoria}}</option>
@@ -216,11 +216,8 @@ function borrado(){
     <option value='2'>Productos >= 10 y < 25 </option>
     <option value='3'>Productos >= 25 y < 60 </option>
     <option value='4'>Productos >= 60 </option>
-</select>
-<div class="btn-group">
-  <button type="button" target="_blank" class="btn btn-default"><span class="glyphicon glyphicon-remove"></span></button>
-<button type="button" onclick="update_pro();" class="btn btn-default"><span class="glyphicon glyphicon-refresh"></span></button>
-</div>
+</select> -->
+
  <form method="POST" id="BusquedaR">{% csrf_token %}
     <input type="text" name="p" id="Pro" placeholder="Nombre Producto, Cod, Marca" class="form-control" title="Busque un producto" required/>
     <span class="input-group-btn">

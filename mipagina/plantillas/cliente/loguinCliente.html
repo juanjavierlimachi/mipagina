@@ -13,7 +13,7 @@ $('#Tipo').submit(function(e){
                 if (resp == "bien"){
                 	window.location="/portada/";
                 }else{
-                	$("#error").html(resp);
+                	$("#error").html("Los datos no son válidos Intente Nuevamente");
                 }
             }
         });
@@ -23,7 +23,7 @@ $('#Tipo').submit(function(e){
 <form method="POST" id="Tipo" action="/loguin-cliente/" class="form-horizontal" role="form">{% csrf_token %}
 	<div class="input-group">
 	 <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-	<input id="login-username" type="tel" class="form-control" name="tel" placeholder="Ingresa tu Nombre" required >
+	<input id="login-username" type="tel" class="form-control" name="tel" placeholder="Ingrese su Nombre" required >
 </div>
 	<div class="input-group">
 	 <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>

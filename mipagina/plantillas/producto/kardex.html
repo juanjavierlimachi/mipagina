@@ -3,7 +3,30 @@ table tr td{text-align: center;}
 table tr td #ar{
 	height: 100px;width: 100px;
 }
+.ok{width: 100%; height: auto;}
 </style>
+<script type="text/javascript">
+		function kardexSalidas(){
+			$.ajax({
+				type:'GET',
+				url:'/ImprimirKardexSalidas/{{producto.id}}/',
+				success:function(resp){
+					$(".ok").html(resp);
+				}
+			});
+		}
+		function kardexIngreso(){
+			$.ajax({
+				type:'GET',
+				url:'/ImprimirKardexEntradas/{{producto.id}}/',
+				success:function(resp){
+					$(".ok").html(resp);
+				}
+			});
+		}
+</script>
+<script type="text/javascript" src="{{STATIC_URL}}js/modales.js"></script>
+<div class="table-responsive">
 <table class="table table-hover table-striped">
 	<tr class="success"><td><img id ="ar" src="{{STATIC_URL}}img/logo.jpg"></td><td align="center" colspan="7"><br><br> Kardex Valorado Producto:   {{producto.Nombre_producto|upper}}</td><td>
 		{% if producto.archivo == '' %}
@@ -64,31 +87,12 @@ table tr td #ar{
   	{% endif %}
 	</tr>
 </table>
+
 <a type="button" class="btn btn-default" href="/ImprimirKardex/{{producto.id}}/" target="_blank" title="Imprimir Kardex"><span class="glyphicon glyphicon-print"></span>  Kardex Valorado</a>
 
 <a type="button" class="btn btn-default" href="#" onclick="kardexSalidas()" title="Imprimir Salidas del Poducto"><span class="glyphicon glyphicon-print"></span>  Imprimir Salidas</a>
 
 <a type="button" class="btn btn-default" href="#" onclick="kardexIngreso()" title="Imprimir Entradas del Producto"><span class="glyphicon glyphicon-print"></span>  Imprimir Entradas</a>
-<div class="table-responsive">
-<div>
-<script type="text/javascript">
-		function kardexSalidas(){
-			$.ajax({
-				type:'GET',
-				url:'/ImprimirKardexSalidas/{{producto.id}}/',
-				success:function(resp){
-					$(".table-responsive").html(resp);
-				}
-			});
-		}
-		function kardexIngreso(){
-			$.ajax({
-				type:'GET',
-				url:'/ImprimirKardexEntradas/{{producto.id}}/',
-				success:function(resp){
-					$(".table-responsive").html(resp);
-				}
-			});
-		}
-</script>
-<script type="text/javascript" src="{{STATIC_URL}}js/modales.js"></script>
+<div class="ok">
+</div>
+</div>
