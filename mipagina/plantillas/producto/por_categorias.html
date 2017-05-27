@@ -53,28 +53,28 @@ $('#categorias table tr td #salida').on('click', function(){
    <table class="table table-hover table-striped">
   <tr><td colspan="11" align="center">LISTA DE ARTÍCULOS E INSUMOS</td></tr>
   <tr class="success">
-    <td>Cod</td>
-    <td>Nombre Articulo</td>
-    <td>Marca</td>
-    <td>Procio Unitario</td>
-    <td>Usuario</td>
-    <td>Categoria</td>
-    <td>Stock</td>
-    <td>Ingreso</td>
-    <td>Salida</td>
-    <td>Opciones</td>
-    <td>Estado</td>
+    <td align="center">Cod</td>
+    <td align="center">Nombre Articulo</td>
+    <td align="center">Marca</td>
+    <td align="center">Procio Unitario</td>
+    <td align="center">Usuario</td>
+    <td align="center">Categoria</td>
+    <td align="center">Stock</td>
+    <td align="center">Ingreso</td>
+    <td align="center">Salida</td>
+    <td align="center">Opciones</td>
+    <td align="center">Estado</td>
   </tr>
   {% for i in datos %}
     {% if i.estado == 0 %}
         <tr>
         <td><a href="/ok/" id="{{i.id}}">{{i.id}}</a></td>
-            <td>{{i.Nombre_producto|upper}}</td>
-            <td>{{i.Marca}}</td>
-            <td>{{i.Precio_producto}}</td>
-            <td>{{i.Usuario}}</td>
-            <td>{{i.Categoria}}</td>
-            <td>{% if i.Stock < 10 %}
+            <td align="center">{{i.Nombre_producto|upper}}</td>
+            <td align="center">{{i.Marca}}</td>
+            <td align="center">{{i.Precio_producto}}</td>
+            <td align="center">{{i.Usuario}}</td>
+            <td align="center">{{i.Categoria}}</td>
+            <td align="center">{% if i.Stock < 10 %}
                       <p style="background:LightCoral;margin-top: 0px;margin-bottom: 0px;">{{i.Stock}}</p>
                   {% endif %}
                   {% if i.Stock >= 10 and i.Stock < 25 %}

@@ -87,7 +87,7 @@ USE_L10N = True
 
 USE_TZ = True
 
-import dj_database_url
+import dj_database_url#aumente
 
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 
@@ -107,7 +107,7 @@ STATICFILES_DIRS=(os.path.join(RUTA_PROYECTO,"static"),)
 MEDIA_ROOT=os.path.join(RUTA_PROYECTO,"media")
 MEDIA_URL='/media/'
 
-db_from_env = dj_database_url.config(conn_max_age=500)
+db_from_env = dj_database_url.config(conn_max_age=500)#aumente
 DATABASES['default'].update(db_from_env)
 
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'#aumente

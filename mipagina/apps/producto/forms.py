@@ -11,6 +11,8 @@ class FormCategoria(ModelForm):
 		exclude=('estado',)
 
 class FormProducto(ModelForm):
+	Precio_producto=forms.FloatField(label="Precio Venta")
+	Precio_venta=forms.FloatField(label="Precio Compra")
 	class Meta:
 		model = Producto
 		exclude=('Usuario','estado','Stock',)

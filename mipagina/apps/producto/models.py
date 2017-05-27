@@ -14,6 +14,7 @@ class Producto(models.Model):
 	Nombre_producto=models.CharField(max_length=150, unique=True)
 	Marca=models.CharField(max_length=50)
 	Precio_producto=models.FloatField()
+	Precio_venta=models.FloatField()#precio compra
 	Stock=models.IntegerField(default=0)
 	Usuario=models.ForeignKey(User)
 	Categoria=models.ForeignKey(Categoria)
